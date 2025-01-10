@@ -20,10 +20,8 @@ const PowderForm = () => {
         ingredients: [],
     });
 
-    const [formulasData] = useState(formulas);
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
-
 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
@@ -97,7 +95,7 @@ const PowderForm = () => {
             <CardContent className="space-y-6">
                 {/* Flavor Profile Section */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">2. Choose Flavor Profile</h3>
+                    <h3 className="text-lg font-semibold p-4">2. Choose Flavor Profile</h3>
                     <RadioGroup
                         onValueChange={(value) => setFormData(prev => ({ ...prev, flavorProfile: value }))}
                         value={formData.flavorProfile}

@@ -267,18 +267,18 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import PowderForm from './PowderForm';
 
-const SupplementForm = () => {
+const QuoteForm = () => {
     const [type, setType] = useState('');
 
     return (
         <Card className="w-full max-w-2xl mx-auto">
-            <CardHeader>
-                <CardTitle className="text-2xl">Rival Labs Quote Calculator</CardTitle>
-            </CardHeader>
+            {/* <CardHeader>
+                <CardTitle className="text-2xl">Build a fucken Quote</CardTitle>
+            </CardHeader> */}
             <CardContent className="space-y-6">
                 {/* Product Type Section */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Choose Product Type</h3>
+                    <h3 className="text-lg font-semibold p-4">Choose Product Type</h3>
                     <RadioGroup
                         onValueChange={setType}
                         value={type}
@@ -303,4 +303,4 @@ const SupplementForm = () => {
     );
 };
 
-export default SupplementForm;
+export default QuoteForm;
