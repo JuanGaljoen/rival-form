@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {
     Card,
     CardContent,
-    CardHeader,
-    CardTitle,
 } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
@@ -29,6 +27,13 @@ const SupplementForm = () => {
     ]);
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
+
+    const getAvailableFormulas = (currentIndex) => {
+        const selectedFormulas = formData.ingredients
+            .filter((_, index) => index !== currentIndex)
+            .map(ing => ing.formula);
+        return formulas.filter(f => !selectedFormulas.includes(f.formula));
+    };
 
     useEffect(() => {
         const weightPerServing = formData.ingredients.reduce((sum, ing) =>
@@ -150,7 +155,7 @@ const SupplementForm = () => {
                                     value={ingredient.formula}
                                     onChange={updateIngredient}
                                     index={index}
-                                    formulas={formulas}
+                                    formulas={getAvailableFormulas(index)}
                                 />
                                 <Input
                                     type="number"
