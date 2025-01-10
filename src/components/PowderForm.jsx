@@ -9,24 +9,21 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
+import formulas from '../data/formulas.json';
 
-const SupplementForm = () => {
+
+const PowderForm = () => {
     const [formData, setFormData] = useState({
         type: '',
         flavorProfile: '',
         servings: '',
         ingredients: [],
     });
-    const [formulas] = useState([
-        { formula: '5-HTP', price: 1.0 },
-        { formula: 'Acai Fruit Ext 4:1', price: 1.5 },
-        { formula: 'Acai Juice Powder', price: 2.2 },
-        { formula: 'Alpha GPC 50%', price: 1.8 },
-        { formula: 'Beta Alanine', price: 0.9 },
-        { formula: 'Caffeine Anhydrous', price: 0.7 }
-    ]);
+
+    const [formulasData] = useState(formulas);
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
+
 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
@@ -237,4 +234,4 @@ const SupplementForm = () => {
     );
 };
 
-export default SupplementForm;
+export default PowderForm;
