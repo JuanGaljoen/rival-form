@@ -11,7 +11,6 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 
-
 const PowderForm = () => {
     const [formData, setFormData] = useState({
         type: '',

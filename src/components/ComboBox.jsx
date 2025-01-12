@@ -11,8 +11,6 @@ import {
 const ComboboxDemo = ({ value, onChange, index, formulas }) => {
     const [open, setOpen] = useState(false);
     const [searchQuery, setSearchQuery] = useState('');
-
-    // Filter formulas based on search query
     const filteredFormulas = formulas.filter((formula) =>
         formula.formula.toLowerCase().includes(searchQuery.toLowerCase())
     );
