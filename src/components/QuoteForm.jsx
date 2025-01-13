@@ -266,6 +266,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import PowderForm from './PowderForm';
+import CapsuleForm from './CapsuleForm';
 
 const QuoteForm = () => {
     const [type, setType] = useState('');
@@ -297,7 +298,7 @@ const QuoteForm = () => {
 
                 {/* Render appropriate form based on type */}
                 {type === 'powder' && <PowderForm />}
-                {type === 'capsule' && <div>Capsule form coming soon...</div>}
+                {type === 'capsule' && <CapsuleForm />}
             </CardContent>
         </Card>
     );
