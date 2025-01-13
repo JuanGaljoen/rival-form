@@ -1,26 +1,2026 @@
 [
     {
         "formula": "5-HTP",
-        "price": 1.0
+        "price": 0.1743
     },
     {
         "formula": "Acai Fruit Ext 4:1",
-        "price": 1.5
+        "price": 0.0153
     },
     {
         "formula": "Acai Juice Powder",
-        "price": 2.2
+        "price": 0.0674
+    },
+    {
+        "formula": "Acerola Cherry powder",
+        "price": 0.0123
+    },
+    {
+        "formula": "Adrenal cortex bovine",
+        "price": 0.1700
+    },
+    {
+        "formula": "Advantra Z 30%",
+        "price": 0.1800
+    },
+    {
+        "formula": "Advantra Z 50% WSP",
+        "price": 0.3300
+    },
+    {
+        "formula": "African Mango Powder (irvinga powder)",
+        "price": 0.0124
+    },
+    {
+        "formula": "Agmatine Sulfate",
+        "price": 0.0130
+    },
+    {
+        "formula": "Aji Amarillo Powder",
+        "price": 0.0861
+    },
+    {
+        "formula": "Ajuga Turkestanica Ext 10:1",
+        "price": 0.0166
+    },
+    {
+        "formula": "Akarkara P.E. 10:1 (Anacyclus Pyrethrum)",
+        "price": 0.0792
+    },
+    {
+        "formula": "Albion Dimagnesium Malate 20%",
+        "price": 0.0149
+    },
+    {
+        "formula": "Aloe Vera Powder",
+        "price": 0.0160
     },
     {
         "formula": "Alpha GPC 50%",
-        "price": 1.8
+        "price": 0.0550
+    },
+    {
+        "formula": "Alpha Lipoic Acid",
+        "price": 0.1142
+    },
+    {
+        "formula": "Angelica Sinensis Angelica (Dong Quai) Root Powder",
+        "price": 0.0150
+    },
+    {
+        "formula": "APPLE CIDER VINEGAR PWDR",
+        "price": 0.0088
+    },
+    {
+        "formula": "Apple Fiber Powder",
+        "price": 0.0136
+    },
+    {
+        "formula": "Aquamin soluble",
+        "price": 0.0160
+    },
+    {
+        "formula": "Aquamin TM",
+        "price": 0.0160
+    },
+    {
+        "formula": "Arachidonic Acid",
+        "price": 0.0600
+    },
+    {
+        "formula": "Aronia Berry (Chokeberry) 10:1",
+        "price": 0.0270
+    },
+    {
+        "formula": "Artichoke Leaf Powder",
+        "price": 0.0060
+    },
+    {
+        "formula": "Ascorbic acid",
+        "price": 0.0050
+    },
+    {
+        "formula": "Ashwagandha Root P.E. 2.5%",
+        "price": 0.0135
+    },
+    {
+        "formula": "Astragalus Ext",
+        "price": 0.0810
+    },
+    {
+        "formula": "Astragalus Root Ext 4:1",
+        "price": 0.0150
+    },
+    {
+        "formula": "Astragalus Root Powder",
+        "price": 0.0090
+    },
+    {
+        "formula": "AstraGin",
+        "price": 0.3351
+    },
+    {
+        "formula": "Ausvita collagen",
+        "price": 0.0100
+    },
+    {
+        "formula": "Avain eggshell collagenkollaGenI.V.X.Â™U.S. Patent # 8,344,106B1",
+        "price": 0.1200
+    },
+    {
+        "formula": "AVOCADO OIL POWDER 50% ON SOLUBLE TAPIOCA FIBER",
+        "price": 0.0282
+    },
+    {
+        "formula": "Avocado Oil Powder 70%",
+        "price": 0.0458
+    },
+    {
+        "formula": "Avocado oil powder CS",
+        "price": 0.0210
+    },
+    {
+        "formula": "Avocado Vital Blend IP II 50%",
+        "price": 0.0115
+    },
+    {
+        "formula": "Avocado Vital Blend IP III 70%",
+        "price": 0.0117
+    },
+    {
+        "formula": "B1 (Thiamine Mononitrate)",
+        "price": 0.1496
+    },
+    {
+        "formula": "B12 Methylcobalamin 1%",
+        "price": 0.0514
+    },
+    {
+        "formula": "B5 (as D-Calcium Pantothenate)",
+        "price": 0.0296
+    },
+    {
+        "formula": "B6 (as P5P)",
+        "price": 0.1957
+    },
+    {
+        "formula": "B9 (as Folic acid)",
+        "price": 0.1295
+    },
+    {
+        "formula": "Bacognize",
+        "price": 0.1045
+    },
+    {
+        "formula": "Bacopa Monnieri 20%",
+        "price": 0.0254
+    },
+    {
+        "formula": "Bacopa Monnieri Powder",
+        "price": 0.0355
+    },
+    {
+        "formula": "Baical Skullcap Root Powder",
+        "price": 0.0125
+    },
+    {
+        "formula": "Baking Powder",
+        "price": 0.0026
+    },
+    {
+        "formula": "Barberry PE 4 to 1",
+        "price": 0.0190
+    },
+    {
+        "formula": "Bayberry Bark",
+        "price": 0.0140
+    },
+    {
+        "formula": "Bayberry powder",
+        "price": 0.0140
+    },
+    {
+        "formula": "BCAA 2.1.1 Fermented",
+        "price": 0.0089
+    },
+    {
+        "formula": "BCAA Instant 211 non Vegan",
+        "price": 0.0110
+    },
+    {
+        "formula": "Beef Spleen Powder",
+        "price": 0.1500
+    },
+    {
+        "formula": "Beet Powder",
+        "price": 0.0073
+    },
+    {
+        "formula": "Beetroot Juice Powder",
+        "price": 0.0110
+    },
+    {
+        "formula": "Berberine HCL 97%",
+        "price": 0.0371
+    },
+    {
+        "formula": "Berberine HCL 5%",
+        "price": 0.0160
+    },
+    {
+        "formula": "Berberine HCL 8%",
+        "price": 0.0249
     },
     {
         "formula": "Beta Alanine",
-        "price": 0.9
+        "price": 0.0070
+    },
+    {
+        "formula": "Beta Carotene 10% (Provitamin A)",
+        "price": 0.2920
+    },
+    {
+        "formula": "Beta Carotene Powder 1% (Provitamin A)",
+        "price": 0.0261
+    },
+    {
+        "formula": "Betaine Anhydrous (TMG)",
+        "price": 0.0063
+    },
+    {
+        "formula": "Betaine Nitrate",
+        "price": 0.0720
+    },
+    {
+        "formula": "Betta Berries Antioxidant blend",
+        "price": 0.0348
+    },
+    {
+        "formula": "BevChia Milled Chia seed + Protein",
+        "price": 0.0108
+    },
+    {
+        "formula": "Bilberry Fruit Powder",
+        "price": 0.0252
+    },
+    {
+        "formula": "Bioperine",
+        "price": 0.6000
+    },
+    {
+        "formula": "Biotin (Vitamin H) 1%",
+        "price": 0.0419
+    },
+    {
+        "formula": "Biotin 99%",
+        "price": 0.3997
+    },
+    {
+        "formula": "BiovaFlex RC",
+        "price": 0.2950
+    },
+    {
+        "formula": "Biovaplex Membrane Mobility powder",
+        "price": 0.5156
+    },
+    {
+        "formula": "Black Carrot Powder",
+        "price": 0.0193
+    },
+    {
+        "formula": "Black Cumin Seed Powder",
+        "price": 0.0157
+    },
+    {
+        "formula": "Black Currant Fruit Powder",
+        "price": 0.0545
+    },
+    {
+        "formula": "Black Tea (20% Theaflavins)",
+        "price": 0.0938
+    },
+    {
+        "formula": "Blue Majik",
+        "price": 0.5159
+    },
+    {
+        "formula": "Blueberry Fruit Ext 4:1",
+        "price": 0.0240
+    },
+    {
+        "formula": "Blueberry Fruit Powder",
+        "price": 0.0210
+    },
+    {
+        "formula": "Boron citrate 5%",
+        "price": 0.0183
+    },
+    {
+        "formula": "Bororganic Glycine 10% (Boron Glycinate)",
+        "price": 0.0725
+    },
+    {
+        "formula": "Boswellia P.E. 65% Boswellic Acid",
+        "price": 0.0130
+    },
+    {
+        "formula": "Bovine Adrenal Powder",
+        "price": 0.1500
+    },
+    {
+        "formula": "Bovine bone broth hydrolyzed protein",
+        "price": 0.0083
+    },
+    {
+        "formula": "Bovine Lung Powder",
+        "price": 0.0473
+    },
+    {
+        "formula": "Bovine Pituitary Powder",
+        "price": 0.1608
+    },
+    {
+        "formula": "Bovine Prostate Powder",
+        "price": 0.0599
+    },
+    {
+        "formula": "Bovine Thyroid Concentrate (Thyroxin Free)",
+        "price": 0.1887
+    },
+    {
+        "formula": "Brain calf",
+        "price": 0.0650
+    },
+    {
+        "formula": "Brown Sugar - light",
+        "price": 0.0029
+    },
+    {
+        "formula": "Butterfly Pea Powder",
+        "price": 0.0958
+    },
+    {
+        "formula": "Buttermilk powder",
+        "price": 0.0049
+    },
+    {
+        "formula": "Cabbage powder",
+        "price": 0.0304
     },
     {
         "formula": "Caffeine Anhydrous",
-        "price": 0.7
+        "price": 0.0150
+    },
+    {
+        "formula": "Caffeine Citrate (as Kaff Citrate)",
+        "price": 0.0210
+    },
+    {
+        "formula": "Calci-K",
+        "price": 0.0124
+    },
+    {
+        "formula": "Calcium Ascorbate",
+        "price": 0.0276
+    },
+    {
+        "formula": "Calcium BHB",
+        "price": 0.0168
+    },
+    {
+        "formula": "Calcium BHB D-form",
+        "price": 0.0113
+    },
+    {
+        "formula": "Calcium Carbonate",
+        "price": 0.0030
+    },
+    {
+        "formula": "Calcium Citrate",
+        "price": 0.0090
+    },
+    {
+        "formula": "Calcium D-Glucarate",
+        "price": 0.1437
+    },
+    {
+        "formula": "Calcium HMB Monohydrate",
+        "price": 0.0275
+    },
+    {
+        "formula": "Calcium stearate",
+        "price": 0.0049
+    },
+    {
+        "formula": "Carnosyn Powder",
+        "price": 0.0240
+    },
+    {
+        "formula": "Carrot Powder",
+        "price": 0.0093
+    },
+    {
+        "formula": "Cat's claw powder",
+        "price": 0.0120
+    },
+    {
+        "formula": "Cayenne Pepper Ext",
+        "price": 0.0340
+    },
+    {
+        "formula": "Cayenne Pepper Powder",
+        "price": 0.0177
+    },
+    {
+        "formula": "CDP Choline (Citicoline Sodium)",
+        "price": 0.1861
+    },
+    {
+        "formula": "Centennial 75 Coconut CL2",
+        "price": 0.0119
+    },
+    {
+        "formula": "Cetyl Myristoleate 20% Powder",
+        "price": 0.1080
+    },
+    {
+        "formula": "Chamomile Flower Powder",
+        "price": 0.0349
+    },
+    {
+        "formula": "Chasteberry Powder",
+        "price": 0.0380
+    },
+    {
+        "formula": "Cherry Juice powder",
+        "price": 0.0144
+    },
+    {
+        "formula": "Chicken Meat Powder 3106",
+        "price": 0.0058
+    },
+    {
+        "formula": "Chlorella (algae)Powder",
+        "price": 0.0145
+    },
+    {
+        "formula": "Chlorella powder organic",
+        "price": 0.0227
+    },
+    {
+        "formula": "Chlorophyll (as sodium copper chlorophyllin)",
+        "price": 0.2700
+    },
+    {
+        "formula": "Chlorophytum borivilianum 10% (Safed Musli)",
+        "price": 0.0282
+    },
+    {
+        "formula": "Chlorophytum Borivilianum Ext 5%",
+        "price": 0.0750
+    },
+    {
+        "formula": "Cho Cho Bean Protein 50% Ecuadorian",
+        "price": 0.0125
+    },
+    {
+        "formula": "Choline Bitartrate",
+        "price": 0.0065
+    },
+    {
+        "formula": "Chondroitin Sulfate USP 90% (O.D.B) By CPC And 72% (As Is) By E-HPLC",
+        "price": 0.0422
+    },
+    {
+        "formula": "Chromium Nicotinate Glycinate Chelate",
+        "price": 0.0500
+    },
+    {
+        "formula": "Chromium polynicotinate",
+        "price": 0.0640
+    },
+    {
+        "formula": "Cilantro Leaf Powder",
+        "price": 0.0190
+    },
+    {
+        "formula": "Cinnamon 2.5% VO",
+        "price": 0.0077
+    },
+    {
+        "formula": "Cissus Quadrangularis Ext 4:1",
+        "price": 0.0148
+    },
+    {
+        "formula": "CISSUS QUADRANGULARIS EXT15%",
+        "price": 0.0482
+    },
+    {
+        "formula": "Cissus Quadrangularis standardized for 10% Ketosterones",
+        "price": 0.0340
+    },
+    {
+        "formula": "Citric acid",
+        "price": 0.0055
+    },
+    {
+        "formula": "Citrus Aurantium",
+        "price": 0.0710
+    },
+    {
+        "formula": "Citrus Aurantium 10% Synephrine",
+        "price": 0.0230
+    },
+    {
+        "formula": "Citrus Aurantium 30%",
+        "price": 0.0117
+    },
+    {
+        "formula": "Citrus Bioflavonoids",
+        "price": 0.0174
+    },
+    {
+        "formula": "Clear Whey Protein Isolate",
+        "price": 0.0180
+    },
+    {
+        "formula": "Cluster Dextrin",
+        "price": 0.0135
+    },
+    {
+        "formula": "Cocoa Ext 20% Theobromine",
+        "price": 0.0374
+    },
+    {
+        "formula": "Cocoabuterol",
+        "price": 0.3500
+    },
+    {
+        "formula": "CocOganic Plus™",
+        "price": 0.0379
+    },
+    {
+        "formula": "Coconut Creamer Jerzee 50",
+        "price": 0.0070
+    },
+    {
+        "formula": "Coconut milk powder",
+        "price": 0.0103
+    },
+    {
+        "formula": "Coconut oil dry 70GA",
+        "price": 0.0054
+    },
+    {
+        "formula": "Coconut water powder",
+        "price": 0.0144
+    },
+    {
+        "formula": "Coenzyme Q10 20% CWS",
+        "price": 0.1480
+    },
+    {
+        "formula": "Cognizin",
+        "price": 0.4300
+    },
+    {
+        "formula": "Collagen Geltech",
+        "price": 0.0120
+    },
+    {
+        "formula": "Collagen Instantized",
+        "price": 0.0125
+    },
+    {
+        "formula": "Colombian Freeze Dried Coffee Granules",
+        "price": 0.0214
+    },
+    {
+        "formula": "Colostrum Bovine 30%",
+        "price": 0.0484
+    },
+    {
+        "formula": "Columbian Organic Spray Dried Coffee",
+        "price": 0.0231
+    },
+    {
+        "formula": "Conjugated Linoleic Acid 60% (CLA TG)",
+        "price": 0.0287
+    },
+    {
+        "formula": "Copper Bisglycinate (~29% Cu)",
+        "price": 0.4866
+    },
+    {
+        "formula": "Copper Chelate",
+        "price": 0.1579
+    },
+    {
+        "formula": "Copper Gluconate Powder",
+        "price": 0.1324
+    },
+    {
+        "formula": "Copper Oxide (Cupric Oxide)",
+        "price": 0.0680
+    },
+    {
+        "formula": "CoQ10",
+        "price": 0.2418
+    },
+    {
+        "formula": "CoQ10 10%",
+        "price": 0.2450
+    },
+    {
+        "formula": "Cordyceps 7%",
+        "price": 0.0170
+    },
+    {
+        "formula": "Corn Starch",
+        "price": 0.0016
+    },
+    {
+        "formula": "Cranberry Fruit Ext",
+        "price": 0.0100
+    },
+    {
+        "formula": "Creatine Alpha-ketoglutarate 2:1",
+        "price": 0.0170
+    },
+    {
+        "formula": "Creatine MagnaPower",
+        "price": 0.0200
+    },
+    {
+        "formula": "Creatine monohydrate 80 mesh",
+        "price": 0.6168
+    },
+    {
+        "formula": "Creatinol O-Phosphate",
+        "price": 0.1078
+    },
+    {
+        "formula": "Cyclic Dextrin",
+        "price": 0.0139
+    },
+    {
+        "formula": "Dandelion Leaf Powder",
+        "price": 0.0107
+    },
+    {
+        "formula": "D-Aspartic Acid",
+        "price": 0.0130
+    },
+    {
+        "formula": "Defatted beef liver powder",
+        "price": 0.0226
+    },
+    {
+        "formula": "Deglycyrrhizinated Licorice ≤3% Glycyrrhizin",
+        "price": 0.0118
+    },
+    {
+        "formula": "Dextrose Monohydrate",
+        "price": 0.0027
+    },
+    {
+        "formula": "DHEA (Dehydroepiandrosterone)",
+        "price": 0.1900
+    },
+    {
+        "formula": "Di Caffeine malate",
+        "price": 0.0380
+    },
+    {
+        "formula": "Di Magnesium Malate powder 20%",
+        "price": 0.0149
+    },
+    {
+        "formula": "Di Potassium Phosphate",
+        "price": 0.0155
+    },
+    {
+        "formula": "DigeSEB Super",
+        "price": 0.1047
+    },
+    {
+        "formula": "Digestive Enzyme Complex Powder (Digezyme)",
+        "price": 0.2463
+    },
+    {
+        "formula": "DIM (3,3-Diindolylmethane)",
+        "price": 0.0390
+    },
+    {
+        "formula": "Disodium EDTA",
+        "price": 0.0380
+    },
+    {
+        "formula": "DL-Malic acid",
+        "price": 0.0048
+    },
+    {
+        "formula": "DL-Methionine",
+        "price": 0.0119
+    },
+    {
+        "formula": "DL-Phenylalanine",
+        "price": 0.0079
+    },
+    {
+        "formula": "DMAE Bitartrate",
+        "price": 0.0082
+    },
+    {
+        "formula": "Dynamine (Methyliberine) 40% Tasteless",
+        "price": 0.2750
+    },
+    {
+        "formula": "Echinacea 4% polyphenols",
+        "price": 0.0100
+    },
+    {
+        "formula": "Elderberry Fruit Ext 10:1 Organic",
+        "price": 0.0135
+    },
+    {
+        "formula": "elevATP",
+        "price": 0.2501
+    },
+    {
+        "formula": "Erythritol Powder",
+        "price": 0.0049
+    },
+    {
+        "formula": "Evodiamine 98%",
+        "price": 0.3555
+    },
+    {
+        "formula": "Fenugreek Ext",
+        "price": 0.0166
+    },
+    {
+        "formula": "Fenugreek Ext 50% Saponins",
+        "price": 0.0190
+    },
+    {
+        "formula": "Fibersol",
+        "price": 0.0073
+    },
+    {
+        "formula": "Fine Pink Himalayan Salt",
+        "price": 0.0050
+    },
+    {
+        "formula": "Fucoxanthin Ext 18%",
+        "price": 0.0330
+    },
+    {
+        "formula": "Garcinia Cambogia P.E. 60% HCA",
+        "price": 0.0135
+    },
+    {
+        "formula": "Gerkens Cacao 10-12",
+        "price": 0.0088
+    },
+    {
+        "formula": "Ginkgo Biloba Ext 10:1",
+        "price": 0.0000
+    },
+    {
+        "formula": "Ginkgo Leaf Powder",
+        "price": 0.0090
+    },
+    {
+        "formula": "GLUCOMANNAN 80% (AMORPHOPHALLUS KONJAC)",
+        "price": 0.0482
+    },
+    {
+        "formula": "Glucosamine HCl",
+        "price": 0.0095
+    },
+    {
+        "formula": "Glucosamine Sulfate",
+        "price": 0.0075
+    },
+    {
+        "formula": "Glycerol Monostearate (GMS)",
+        "price": 0.0050
+    },
+    {
+        "formula": "GlycerPump",
+        "price": 0.0180
+    },
+    {
+        "formula": "goFAT® Coconut Oil Powder 73-77% Fat",
+        "price": 0.0102
+    },
+    {
+        "formula": "Golden Seal Root",
+        "price": 0.1280
+    },
+    {
+        "formula": "GPLC (Glycine Propionyl L-Carnitine HCL)",
+        "price": 0.0682
+    },
+    {
+        "formula": "Graham Cracker Crumbs",
+        "price": 0.0052
+    },
+    {
+        "formula": "Grape Seed Ext 95% (Proan.)",
+        "price": 0.0374
+    },
+    {
+        "formula": "Grapefruit Seed Ext 4:1",
+        "price": 0.0466
+    },
+    {
+        "formula": "Grass Fed, Grass Finished Beef Bone Marrow Powder",
+        "price": 0.0550
+    },
+    {
+        "formula": "Grass Fed, Grass Finished Beef Colostrum Powder",
+        "price": 0.0750
+    },
+    {
+        "formula": "Grass Fed, Grass Finished Beef Liver Powder",
+        "price": 0.0300
+    },
+    {
+        "formula": "Green Balance Alkalizing Blend Organic",
+        "price": 0.0247
+    },
+    {
+        "formula": "Green Coffee 50% CA",
+        "price": 0.0370
+    },
+    {
+        "formula": "Green Coffee Bean Ext 4:1",
+        "price": 0.0245
+    },
+    {
+        "formula": "Green Lentil Bean Powder",
+        "price": 0.0101
+    },
+    {
+        "formula": "Green Pea Powder",
+        "price": 0.0180
+    },
+    {
+        "formula": "Green Tea",
+        "price": 0.0260
+    },
+    {
+        "formula": "Green Tea 98% Polyphenols 50%EGCG",
+        "price": 0.0325
+    },
+    {
+        "formula": "Green Tea Ext 98% EGCG",
+        "price": 0.1950
+    },
+    {
+        "formula": "Green Tea Leaf Ext 4.1",
+        "price": 0.0215
+    },
+    {
+        "formula": "Guar Gum",
+        "price": 0.0049
+    },
+    {
+        "formula": "Guarana Seed 22% Caffeine",
+        "price": 0.0210
+    },
+    {
+        "formula": "Hawthorne Berry Ext 4:1",
+        "price": 0.0066
+    },
+    {
+        "formula": "Hawthorne Berry Powder",
+        "price": 0.0342
+    },
+    {
+        "formula": "HICA",
+        "price": 0.0550
+    },
+    {
+        "formula": "Himalayan pink salt",
+        "price": 0.0059
+    },
+    {
+        "formula": "Honey powder",
+        "price": 0.0058
+    },
+    {
+        "formula": "Horsetail powder",
+        "price": 0.0108
+    },
+    {
+        "formula": "Horsetail Silica 7% UV",
+        "price": 0.0680
+    },
+    {
+        "formula": "Huperzine A 1%",
+        "price": 0.4708
+    },
+    {
+        "formula": "Huperzine A 1% - Synthetic",
+        "price": 0.4750
+    },
+    {
+        "formula": "HydroMax EZ Flow Blend® (Glycerol Powder 50%)",
+        "price": 0.0205
+    },
+    {
+        "formula": "HydroPrime (Glycerol Powder)(Std. to min. 65% glycerol)",
+        "price": 0.0168
+    },
+    {
+        "formula": "Hymato F70 Powder",
+        "price": 0.4000
+    },
+    {
+        "formula": "Indole 3 Carbinol",
+        "price": 0.1050
+    },
+    {
+        "formula": "InnoSlim",
+        "price": 0.0836
+    },
+    {
+        "formula": "Inositol",
+        "price": 0.0270
+    },
+    {
+        "formula": "Inositol Hexaniacinate",
+        "price": 0.0516
+    },
+    {
+        "formula": "Inositol Hexaphosphate (IP6)",
+        "price": 0.0340
+    },
+    {
+        "formula": "Inulin",
+        "price": 0.0069
+    },
+    {
+        "formula": "Inulin 90% (Chicory Root)",
+        "price": 0.0085
+    },
+    {
+        "formula": "Iodized Salt",
+        "price": 0.2116
+    },
+    {
+        "formula": "Iron Powder (Ferrous Fumarate)",
+        "price": 0.0270
+    },
+    {
+        "formula": "Julia Rose Micros bulk vitamin powder",
+        "price": 0.0644
+    },
+    {
+        "formula": "Juniper Berry 10.1 Ext",
+        "price": 0.0258
+    },
+    {
+        "formula": "Juniper Berry Ext 4:1",
+        "price": 0.0178
+    },
+    {
+        "formula": "Kale powder Organic",
+        "price": 0.0085
+    },
+    {
+        "formula": "Kaneka Q30",
+        "price": 0.6750
+    },
+    {
+        "formula": "Kelp powder Organic",
+        "price": 0.0648
+    },
+    {
+        "formula": "KSM-66 Ashwaganda VEGAN",
+        "price": 0.0760
+    },
+    {
+        "formula": "KSM-66 Ashwaghanda",
+        "price": 0.0710
+    },
+    {
+        "formula": "L- Selenomethionine",
+        "price": 0.0500
+    },
+    {
+        "formula": "L-Alanine FERMENTED",
+        "price": 0.0210
+    },
+    {
+        "formula": "L-Arginine",
+        "price": 0.0110
+    },
+    {
+        "formula": "L-Arginine AKG",
+        "price": 0.0157
+    },
+    {
+        "formula": "L-Arginine AKG 2.1",
+        "price": 0.0150
+    },
+    {
+        "formula": "L-Arginine Base",
+        "price": 0.0115
+    },
+    {
+        "formula": "L-Arginine HCL",
+        "price": 0.0108
+    },
+    {
+        "formula": "L-Arginine L-Pyroglutamate",
+        "price": 0.0144
+    },
+    {
+        "formula": "L-Aspartic acid",
+        "price": 0.0035
+    },
+    {
+        "formula": "L-Carnitine Fumarate",
+        "price": 0.0380
+    },
+    {
+        "formula": "L-Carnitine L-Tartrate",
+        "price": 0.0316
+    },
+    {
+        "formula": "L-Citrulline",
+        "price": 0.0080
+    },
+    {
+        "formula": "L-Citrulline Malate 1.1",
+        "price": 0.0132
+    },
+    {
+        "formula": "L-Citrulline Malate 2.1",
+        "price": 0.0080
+    },
+    {
+        "formula": "L-Cysteine HCL",
+        "price": 0.0195
+    },
+    {
+        "formula": "Lemon Balm Powder",
+        "price": 0.0290
+    },
+    {
+        "formula": "L-Glutamine Regular",
+        "price": 0.0105
+    },
+    {
+        "formula": "L-Glutathione",
+        "price": 0.1744
+    },
+    {
+        "formula": "L-Glycine",
+        "price": 0.0155
+    },
+    {
+        "formula": "L-Histidine Base",
+        "price": 0.0649
+    },
+    {
+        "formula": "L-Histidine Mono HCL",
+        "price": 0.0505
+    },
+    {
+        "formula": "Licorice Root",
+        "price": 0.0150
+    },
+    {
+        "formula": "Lion's Mane Mushroom Powder",
+        "price": 0.0252
+    },
+    {
+        "formula": "Litesse standard",
+        "price": 0.0028
+    },
+    {
+        "formula": "L-Leucine Instant",
+        "price": 0.0143
+    },
+    {
+        "formula": "L-Lysine Mono HCL Granular",
+        "price": 0.0055
+    },
+    {
+        "formula": "L-Methionine",
+        "price": 0.0115
+    },
+    {
+        "formula": "L-Norvaline",
+        "price": 0.0697
+    },
+    {
+        "formula": "L-Ornithine Mono HCL",
+        "price": 0.0181
+    },
+    {
+        "formula": "L-Phenylalanine USP",
+        "price": 0.0093
+    },
+    {
+        "formula": "L-Proline",
+        "price": 0.0170
+    },
+    {
+        "formula": "L-Serine",
+        "price": 0.0349
+    },
+    {
+        "formula": "L-Taurine",
+        "price": 0.0045
+    },
+    {
+        "formula": "L-Theanine",
+        "price": 0.0230
+    },
+    {
+        "formula": "L-Threonine",
+        "price": 0.0045
+    },
+    {
+        "formula": "L-Tryptophan",
+        "price": 0.0218
+    },
+    {
+        "formula": "L-Tyrosine",
+        "price": 0.0116
+    },
+    {
+        "formula": "Lutein",
+        "price": 0.0798
+    },
+    {
+        "formula": "L-Valine",
+        "price": 0.0192
+    },
+    {
+        "formula": "Maca Powder",
+        "price": 0.0050
+    },
+    {
+        "formula": "Magnesium Aspartate 20%",
+        "price": 0.0130
+    },
+    {
+        "formula": "Magnesium Aspartate 30% COMPLEX",
+        "price": 0.0140
+    },
+    {
+        "formula": "Magnesium BHB",
+        "price": 0.0190
+    },
+    {
+        "formula": "Magnesium BHB D-form",
+        "price": 0.0183
+    },
+    {
+        "formula": "Magnesium Citrate",
+        "price": 0.0078
+    },
+    {
+        "formula": "Magnesium Citrate 14-16%",
+        "price": 0.0071
+    },
+    {
+        "formula": "Magnesium Glycinate 13%-14% Mg",
+        "price": 0.0165
+    },
+    {
+        "formula": "Magnesium Glycinate Glutamine Chelate",
+        "price": 0.0477
+    },
+    {
+        "formula": "Magnesium Oxide 60%",
+        "price": 0.0060
+    },
+    {
+        "formula": "Magnesium Phosphate",
+        "price": 0.0480
+    },
+    {
+        "formula": "Magnesium Stearate",
+        "price": 0.0048
+    },
+    {
+        "formula": "Magnesium Taurate 15%",
+        "price": 0.0300
+    },
+    {
+        "formula": "Magnesium Taurate 8%",
+        "price": 0.0225
+    },
+    {
+        "formula": "Maltodextrin",
+        "price": 0.0022
+    },
+    {
+        "formula": "Manganese Gluconate",
+        "price": 0.0572
+    },
+    {
+        "formula": "Maple Sugar",
+        "price": 0.0201
+    },
+    {
+        "formula": "Maral root (Rhaponticum Carthamoides)",
+        "price": 0.0533
+    },
+    {
+        "formula": "Marshmellow Root Powder",
+        "price": 0.0176
+    },
+    {
+        "formula": "Matcha Green Tea powder",
+        "price": 0.0230
+    },
+    {
+        "formula": "Melatonin",
+        "price": 0.3431
+    },
+    {
+        "formula": "Methylliberine (as Dynamine)(Pure)",
+        "price": 0.6940
+    },
+    {
+        "formula": "Milk Thistle 5:1 Ext",
+        "price": 0.0120
+    },
+    {
+        "formula": "Milk Thistle 80% Silymarin",
+        "price": 0.0344
+    },
+    {
+        "formula": "Milk Thistle Powder",
+        "price": 0.0080
+    },
+    {
+        "formula": "Millet flour",
+        "price": 0.0041
+    },
+    {
+        "formula": "MitoBurn",
+        "price": 0.1840
+    },
+    {
+        "formula": "Molybdenum Glycinate",
+        "price": 0.0518
+    },
+    {
+        "formula": "Monk Fruit 40% Mogrosides",
+        "price": 0.3150
+    },
+    {
+        "formula": "Monocore Plus Monoguard Re-Package",
+        "price": 0.2262
+    },
+    {
+        "formula": "Monopotassium Phosphate",
+        "price": 0.0109
+    },
+    {
+        "formula": "MSM (Methylsulfonylmethane)",
+        "price": 0.0056
+    },
+    {
+        "formula": "Mucuna Pruriens",
+        "price": 0.0154
+    },
+    {
+        "formula": "Mucuna Pruriens (L-Dopa 15%)",
+        "price": 0.0224
+    },
+    {
+        "formula": "Mucuna Pruriens L-Dopa 98%",
+        "price": 0.1670
+    },
+    {
+        "formula": "N Methyltyramine HCL",
+        "price": 0.2376
+    },
+    {
+        "formula": "N-Acetyl D-Glucosamine",
+        "price": 0.0285
+    },
+    {
+        "formula": "N-Acetyl L-Cysteine",
+        "price": 0.0220
+    },
+    {
+        "formula": "N-Acetyl L-Tyrosine",
+        "price": 0.0253
+    },
+    {
+        "formula": "N-Acetyl-L-Carnitine HCI",
+        "price": 0.0253
+    },
+    {
+        "formula": "Naringin",
+        "price": 0.0958
+    },
+    {
+        "formula": "Nattokinase",
+        "price": 0.6000
+    },
+    {
+        "formula": "Natural Caffeine 98% from Green Tea",
+        "price": 0.0464
+    },
+    {
+        "formula": "Natural Caffeine Anhydrous from Arabica Bean",
+        "price": 0.0450
+    },
+    {
+        "formula": "Natural Masking",
+        "price": 0.0462
+    },
+    {
+        "formula": "Natural Resolver FAOP804",
+        "price": 0.0313
+    },
+    {
+        "formula": "Niacinamide/ Nicotinamide B3",
+        "price": 0.0133
+    },
+    {
+        "formula": "Nitrosigine",
+        "price": 0.2620
+    },
+    {
+        "formula": "Nu-Flow",
+        "price": 0.0160
+    },
+    {
+        "formula": "Nutmeg Powder",
+        "price": 0.0270
+    },
+    {
+        "formula": "Nutritional Yeast Powder",
+        "price": 0.0073
+    },
+    {
+        "formula": "OLIVE LEAF EXT 10:1",
+        "price": 0.0136
+    },
+    {
+        "formula": "Omega-3 Fish Oil Powder",
+        "price": 0.0600
+    },
+    {
+        "formula": "Oolong Tea EXT 50%",
+        "price": 0.0151
+    },
+    {
+        "formula": "Opitac L-Glutathione",
+        "price": 0.3800
+    },
+    {
+        "formula": "OptiMSMÂ® microprill with 0.5% SiO2 #10520",
+        "price": 0.0176
+    },
+    {
+        "formula": "Organic Agave Inulin",
+        "price": 0.0114
+    },
+    {
+        "formula": "Organic Alfalfa (aerial) Powder",
+        "price": 0.0100
+    },
+    {
+        "formula": "Organic Aloe Vera Powder (Leaf)",
+        "price": 0.0166
+    },
+    {
+        "formula": "Organic Amla (fruit)Powder",
+        "price": 0.0159
+    },
+    {
+        "formula": "Organic Apple Fruit Powder",
+        "price": 0.0124
+    },
+    {
+        "formula": "Organic Ashwagandha Powder",
+        "price": 0.0119
+    },
+    {
+        "formula": "Organic Barley(leaf) Powder",
+        "price": 0.0095
+    },
+    {
+        "formula": "Organic Beef Bone Broth Protein Powder (Prinova)",
+        "price": 0.0529
+    },
+    {
+        "formula": "Organic Beet Root Powder",
+        "price": 0.0319
+    },
+    {
+        "formula": "Organic Beetroot Juice Powder",
+        "price": 0.0248
+    },
+    {
+        "formula": "Organic Cacao Powder - Extra Rich",
+        "price": 0.0156
+    },
+    {
+        "formula": "Organic Cane Sugar",
+        "price": 0.0025
+    },
+    {
+        "formula": "Organic Cinnamon",
+        "price": 0.0030
+    },
+    {
+        "formula": "Organic Coconut Sugar",
+        "price": 0.0055
+    },
+    {
+        "formula": "Organic Dandelion Root Powder",
+        "price": 0.0143
+    },
+    {
+        "formula": "Organic Freeze Dried Strawberry Powder",
+        "price": 0.0491
+    },
+    {
+        "formula": "Organic Gelatinized Maca Root Powder",
+        "price": 0.0172
+    },
+    {
+        "formula": "Organic Ginger Root Powder",
+        "price": 0.0078
+    },
+    {
+        "formula": "Organic Ground Cinnamon Powder",
+        "price": 0.0248
+    },
+    {
+        "formula": "Organic Inulin (from Jerusalem Artichoke)",
+        "price": 0.0074
+    },
+    {
+        "formula": "Organic Maitake Mushroom Powder",
+        "price": 0.0180
+    },
+    {
+        "formula": "Organic Matcha Powder",
+        "price": 0.0140
+    },
+    {
+        "formula": "Organic Mexican Coffee",
+        "price": 0.0146
+    },
+    {
+        "formula": "Organic Moringa Powder",
+        "price": 0.0086
+    },
+    {
+        "formula": "Organic Papaya Fruit Powder",
+        "price": 0.0203
+    },
+    {
+        "formula": "Organic Peppermint Leaf Powder",
+        "price": 0.0718
+    },
+    {
+        "formula": "ORGANIC POMEGRANATE",
+        "price": 0.0170
+    },
+    {
+        "formula": "Organic Turmeric Powder",
+        "price": 0.0077
+    },
+    {
+        "formula": "Organic Wheat grass powder",
+        "price": 0.0099
+    },
+    {
+        "formula": "Panax Ginseng Root Powder (ORGANIC)",
+        "price": 0.0171
+    },
+    {
+        "formula": "PAPAIN",
+        "price": 0.0286
+    },
+    {
+        "formula": "Papain 350 TU/mg",
+        "price": 0.1190
+    },
+    {
+        "formula": "Papain 525 TU/mg",
+        "price": 0.0286
+    },
+    {
+        "formula": "Papaya Powder",
+        "price": 0.0223
+    },
+    {
+        "formula": "Paradoxine",
+        "price": 0.2998
+    },
+    {
+        "formula": "Parsley Powder",
+        "price": 0.0230
+    },
+    {
+        "formula": "Passion flower 10:1 Ext",
+        "price": 0.0220
+    },
+    {
+        "formula": "Passion Flower 4:1",
+        "price": 0.0149
+    },
+    {
+        "formula": "Passion Flower powder",
+        "price": 0.0220
+    },
+    {
+        "formula": "Pea Protein 80%",
+        "price": 0.0067
+    },
+    {
+        "formula": "Pea Starch",
+        "price": 0.0002
+    },
+    {
+        "formula": "Peak ATP",
+        "price": 0.2901
+    },
+    {
+        "formula": "Peak O2",
+        "price": 0.0388
+    },
+    {
+        "formula": "Peanut flour 28% Fat Light Roast #522857",
+        "price": 0.0114
+    },
+    {
+        "formula": "Pepsin Powder (Porcine)",
+        "price": 0.0822
+    },
+    {
+        "formula": "Phosphatidyl Serine 20%",
+        "price": 0.1916
+    },
+    {
+        "formula": "Pineapple Powder (Spray Dried)",
+        "price": 0.0195
+    },
+    {
+        "formula": "Potassium Bitartrate",
+        "price": 0.0132
+    },
+    {
+        "formula": "Potassium Chloride",
+        "price": 0.0071
+    },
+    {
+        "formula": "Potassium Citrate 38.3%",
+        "price": 0.0069
+    },
+    {
+        "formula": "Potassium Glycinate complex",
+        "price": 0.0190
+    },
+    {
+        "formula": "Potassium Iodide",
+        "price": 0.4400
+    },
+    {
+        "formula": "Powdered Chicken Broth",
+        "price": 0.0165
+    },
+    {
+        "formula": "Pumpkin Seed Ext 4.1",
+        "price": 0.0124
+    },
+    {
+        "formula": "Pumpkin Seed EXT 5:1",
+        "price": 0.0105
+    },
+    {
+        "formula": "Pure Ocean Sea Salt",
+        "price": 0.0020
+    },
+    {
+        "formula": "Pyridoxal-5-Phosphate",
+        "price": 0.0375
+    },
+    {
+        "formula": "Pyridoxine HCL B6",
+        "price": 0.0229
+    },
+    {
+        "formula": "Quercetin Dihydrate 95%",
+        "price": 0.0780
+    },
+    {
+        "formula": "Quercetin Dihydrate 95% Granular",
+        "price": 0.0730
+    },
+    {
+        "formula": "Raspberry Ketone",
+        "price": 0.0338
+    },
+    {
+        "formula": "Red Algae Powder (Gracilaria Gracilis)",
+        "price": 0.0230
+    },
+    {
+        "formula": "Red Beet Juice Powder FAPI392",
+        "price": 0.0718
+    },
+    {
+        "formula": "Red Beet Root Ext 1%",
+        "price": 0.0161
+    },
+    {
+        "formula": "Red Beet Root Powder",
+        "price": 0.0063
+    },
+    {
+        "formula": "Redmond Salt powder",
+        "price": 0.0097
+    },
+    {
+        "formula": "Reishi Mushroom(fruit body) Powder",
+        "price": 0.0130
+    },
+    {
+        "formula": "Rhodiola P.E. 1% Salidroside",
+        "price": 0.0153
+    },
+    {
+        "formula": "Rhodiola P.E. 3% Salidroside HPLC",
+        "price": 0.0350
+    },
+    {
+        "formula": "Rhodiola Rosea Ext 3% Salidrosides",
+        "price": 0.0540
+    },
+    {
+        "formula": "Riboflavin 5 Sodium Phosphate",
+        "price": 0.1180
+    },
+    {
+        "formula": "Rice Bran Powder",
+        "price": 0.0079
+    },
+    {
+        "formula": "Rosehips Powder",
+        "price": 0.0342
+    },
+    {
+        "formula": "Rosemary Ext 4:1",
+        "price": 0.0350
+    },
+    {
+        "formula": "Rutin Powder",
+        "price": 0.0440
+    },
+    {
+        "formula": "Sacha Inchi Protein",
+        "price": 0.0285
+    },
+    {
+        "formula": "Saw Palmetto 10:1 Ext.",
+        "price": 0.0120
+    },
+    {
+        "formula": "Saw Palmetto Berry Powder",
+        "price": 0.0154
+    },
+    {
+        "formula": "Saw Palmetto Powder",
+        "price": 0.0180
+    },
+    {
+        "formula": "Saw Palmetto Powder Ext 5:1",
+        "price": 0.0145
+    },
+    {
+        "formula": "Sea Salt",
+        "price": 0.0013
+    },
+    {
+        "formula": "Selenium Glycinate 1%",
+        "price": 0.4101
+    },
+    {
+        "formula": "Berry color",
+        "price": 0.0433
+    },
+    {
+        "formula": "Natural Blue Powder",
+        "price": 0.1484
+    },
+    {
+        "formula": "Shiitake Mushroom Powder",
+        "price": 0.0580
+    },
+    {
+        "formula": "Sipernat 50",
+        "price": 0.0315
+    },
+    {
+        "formula": "Hydrolyzed collagen",
+        "price": 0.0125
+    },
+    {
+        "formula": "Slippery Elm Bark-Purified Herbal Powder",
+        "price": 0.0083
+    },
+    {
+        "formula": "Sodium BHB",
+        "price": 0.0145
+    },
+    {
+        "formula": "Sodium BHB D-form",
+        "price": 0.0072
+    },
+    {
+        "formula": "Sodium chloride",
+        "price": 0.0025
+    },
+    {
+        "formula": "Sodium Citrate",
+        "price": 0.0055
+    },
+    {
+        "formula": "Sodium Hyaluronate",
+        "price": 0.1427
+    },
+    {
+        "formula": "Sodium Phosphate (DSPA)",
+        "price": 0.0300
+    },
+    {
+        "formula": "Sodium R-ALA Alpha Lipoic Acid R Version",
+        "price": 0.3990
+    },
+    {
+        "formula": "SolarSeaÂ® AC High Magnesium",
+        "price": 0.0328
+    },
+    {
+        "formula": "Ground Jalapeno Powder",
+        "price": 0.0219
+    },
+    {
+        "formula": "Onion Powder",
+        "price": 0.0103
+    },
+    {
+        "formula": "Porcini Mushroom Powder",
+        "price": 0.0662
+    },
+    {
+        "formula": "Roasted Garlic Powder",
+        "price": 0.0184
+    },
+    {
+        "formula": "Taco Supreme Seasoning",
+        "price": 0.0119
+    },
+    {
+        "formula": "White Cheddar Cheese Powder",
+        "price": 0.0218
+    },
+    {
+        "formula": "Black Pepper Fine 60 Mesh",
+        "price": 0.0127
+    },
+    {
+        "formula": "Spilanthes Acmelia Ext 4:1",
+        "price": 0.0320
+    },
+    {
+        "formula": "Spilanthes Acmella",
+        "price": 0.2355
+    },
+    {
+        "formula": "Spirulina Powder Organic",
+        "price": 0.0078
+    },
+    {
+        "formula": "Sugar",
+        "price": 0.0011
+    },
+    {
+        "formula": "Sunflower Lecithin",
+        "price": 0.0420
+    },
+    {
+        "formula": "Swedish Flower Pollen",
+        "price": 0.4188
+    },
+    {
+        "formula": "Synephrine HCL 98%",
+        "price": 0.1168
+    },
+    {
+        "formula": "Tart Cherry Ext powder",
+        "price": 0.0416
+    },
+    {
+        "formula": "Tart Cherry Powder",
+        "price": 0.0188
+    },
+    {
+        "formula": "Tartaric Acid",
+        "price": 0.0129
+    },
+    {
+        "formula": "Tauroursodeoxycholic Acid (TUDCA)",
+        "price": 0.6250
+    },
+    {
+        "formula": "TeaCrine Pure",
+        "price": 0.5870
+    },
+    {
+        "formula": "TeaCrine TASTELESS 40%",
+        "price": 0.2110
+    },
+    {
+        "formula": "TEST FG",
+        "price": 0.6000
+    },
+    {
+        "formula": "Theacrine (generic)",
+        "price": 0.2590
+    },
+    {
+        "formula": "Theobromine 10%",
+        "price": 0.0233
+    },
+    {
+        "formula": "Theobromine 99%",
+        "price": 0.0578
+    },
+    {
+        "formula": "Thiamine HCL",
+        "price": 0.0525
+    },
+    {
+        "formula": "TicaxanÂ® Xanthan Powder",
+        "price": 0.0264
+    },
+    {
+        "formula": "Tribulus Terrestris 60% Saponin",
+        "price": 0.0099
+    },
+    {
+        "formula": "Tribulus Terrestris Ext 45% Saponins",
+        "price": 0.0130
+    },
+    {
+        "formula": "Trimagnesium Dicitrate 14-16%",
+        "price": 0.0065
+    },
+    {
+        "formula": "Tripotassium Phosphate",
+        "price": 0.0240
+    },
+    {
+        "formula": "TruServ Greens blend",
+        "price": 0.0323
+    },
+    {
+        "formula": "TruServ Organic Fruit Blend (organic cranberry, organic apple, organic blueberry)blend",
+        "price": 0.0548
+    },
+    {
+        "formula": "TruServ Veggie Blend",
+        "price": 0.0288
+    },
+    {
+        "formula": "Turkey Tail Mushroom Powder",
+        "price": 0.0455
+    },
+    {
+        "formula": "Turmeric Ext 95% curcuminoids",
+        "price": 0.1478
+    },
+    {
+        "formula": "Turmeric Powder",
+        "price": 0.0092
+    },
+    {
+        "formula": "Uridine 5'-monophosphate",
+        "price": 0.1400
+    },
+    {
+        "formula": "Uva Ursi 10:1",
+        "price": 0.0002
+    },
+    {
+        "formula": "Uva Ursi Powder 15kg pack",
+        "price": 0.0561
+    },
+    {
+        "formula": "Valerian root 0.8% powdered Ext",
+        "price": 0.2000
+    },
+    {
+        "formula": "Vanadium Nicotinate Glycinate Chelate",
+        "price": 0.0891
+    },
+    {
+        "formula": "VasoDrive-AP (Ameal Peptide)",
+        "price": 0.4888
+    },
+    {
+        "formula": "ViNitrox",
+        "price": 0.2090
+    },
+    {
+        "formula": "Vitamin A Plamitate",
+        "price": 0.0615
+    },
+    {
+        "formula": "Vitamin D3 (as cholecalciferol",
+        "price": 0.0494
+    },
+    {
+        "formula": "Vitamin k1",
+        "price": 0.2588
+    },
+    {
+        "formula": "Waxy Maize (Tate and Lyle Mira-Sperse)",
+        "price": 0.0047
+    },
+    {
+        "formula": "Whey Protein Concentrate 80%",
+        "price": 0.0095
+    },
+    {
+        "formula": "Whey Protein Isolate 90%",
+        "price": 0.0210
+    },
+    {
+        "formula": "WHITE BEET ROOT EXT 1%",
+        "price": 0.0155
+    },
+    {
+        "formula": "White Peony Ext 10% Paeoniflorin",
+        "price": 0.0210
+    },
+    {
+        "formula": "White Willow Bark P.E. 15%",
+        "price": 0.0237
+    },
+    {
+        "formula": "Wild Yam Powder",
+        "price": 0.0143
+    },
+    {
+        "formula": "Xanthinol Nicotinate",
+        "price": 0.1595
+    },
+    {
+        "formula": "Xylitol Powder",
+        "price": 0.0120
+    },
+    {
+        "formula": "Yellow Lentil Powder",
+        "price": 0.0110
+    },
+    {
+        "formula": "Zinc Aspartate 20%",
+        "price": 0.0200
+    },
+    {
+        "formula": "Zinc Bisglycinate Chelate",
+        "price": 0.0546
+    },
+    {
+        "formula": "Zinc Citrate Powder",
+        "price": 0.0846
+    },
+    {
+        "formula": "Zinc Gluconate Dihydrate",
+        "price": 0.0086
+    },
+    {
+        "formula": "Zinc Glycinate 30%",
+        "price": 0.0400
+    },
+    {
+        "formula": "Zinc Oxide 78%",
+        "price": 0.0090
+    },
+    {
+        "formula": "Zinc picolinate 20%",
+        "price": 0.0320
     }
 ]
