@@ -94,8 +94,8 @@ const CapsuleForm = () => {
     };
 
     return (
-        <Card className="w-full max-w-2xl mx-auto">
-            <CardContent className="space-y-6">
+        <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
+            <CardContent className="space-y-6 p-0">
                 {/* Servings Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold p-4">2. Number of Servings per Bottle</h3>
@@ -105,19 +105,6 @@ const CapsuleForm = () => {
                         value={formData.servings}
                         onChange={(e) => setFormData(prev => ({ ...prev, servings: e.target.value }))}
                         placeholder="Enter number of servings"
-                        className="max-w-xs"
-                    />
-                </div>
-
-                {/* Quantity Section */}
-                <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">3. Number of Bottles</h3>
-                    <Input
-                        type="number"
-                        min="1"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData(prev => ({ ...prev, quantity: e.target.value }))}
-                        placeholder="Enter number of bottles"
                         className="max-w-xs"
                     />
                 </div>
@@ -168,6 +155,20 @@ const CapsuleForm = () => {
                             <p>Total capsules per bottle: {totalCapsulesPerBottle}</p>
                         </div>
                     )}
+                </div>
+
+
+                {/* Quantity Section */}
+                <div className="space-y-4">
+                    <h3 className="text-lg font-semibold">3. Number of Bottles</h3>
+                    <Input
+                        type="number"
+                        min="1"
+                        value={formData.quantity}
+                        onChange={(e) => setFormData(prev => ({ ...prev, quantity: e.target.value }))}
+                        placeholder="Enter number of bottles"
+                        className="max-w-xs"
+                    />
                 </div>
 
                 {/* Summary Section */}
