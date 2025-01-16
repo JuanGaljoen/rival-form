@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
+import { Trash2 } from "lucide-react";
 
 const CapsuleForm = () => {
     const [formData, setFormData] = useState({
@@ -115,27 +116,29 @@ const CapsuleForm = () => {
                     <div className="space-y-4">
                         {formData.ingredients.map((ingredient, index) => (
                             <div key={index} className="flex items-start space-x-4">
-                                <ComboboxDemo
-                                    value={ingredient.formula}
-                                    onChange={updateIngredient}
-                                    index={index}
-                                    formulas={getAvailableFormulas(index)}
-                                />
+                                <div className="flex-1 min-w-0">
+                                    <ComboboxDemo
+                                        value={ingredient.formula}
+                                        onChange={updateIngredient}
+                                        index={index}
+                                        formulas={getAvailableFormulas(index)}
+                                    />
+                                </div>
                                 <Input
                                     type="number"
                                     value={ingredient.grams}
                                     onChange={(e) => updateIngredient(index, 'grams', e.target.value)}
-                                    placeholder="Grams"
-                                    className="w-24"
-                                    min="0.1"
-                                    step="0.1"
+                                    placeholder="g"
+                                    className="w-16 sm:w-24 shrink-0"
+                                    min="1"
                                 />
                                 <Button
                                     variant="destructive"
                                     onClick={() => removeIngredient(index)}
-                                    className="px-2"
+                                    className="p-2 shrink-0"
                                 >
-                                    Remove
+                                    <Trash2 className="h-4 w-4" />
+                                    <span className="sr-only">Remove</span>
                                 </Button>
                             </div>
                         ))}
