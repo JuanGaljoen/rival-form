@@ -22,15 +22,17 @@ const ComboboxDemo = ({ value, onChange, index, formulas }) => {
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-64 justify-between"
+                    className="w-full justify-between truncate"
                 >
-                    {value
-                        ? formulas.find((formula) => formula.formula === value)?.formula
-                        : "Select ingredient..."}
+                    <span className="truncate">
+                        {value
+                            ? formulas.find((formula) => formula.formula === value)?.formula
+                            : "Select ingredient..."}
+                    </span>
                     <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-64 p-2" align="start">
+            <PopoverContent className="w-[var(--radix-popover-trigger-width)] min-w-[200px] p-2" align="start">
                 <div className="flex flex-col gap-2">
                     <Input
                         placeholder="Search ingredients..."
@@ -56,9 +58,9 @@ const ComboboxDemo = ({ value, onChange, index, formulas }) => {
                                     }}
                                 >
                                     {value === formula.formula && (
-                                        <Check className="h-4 w-4" />
+                                        <Check className="h-4 w-4 shrink-0" />
                                     )}
-                                    <span>{formula.formula}</span>
+                                    <span className="truncate">{formula.formula}</span>
                                 </Button>
                             ))
                         )}
@@ -70,3 +72,4 @@ const ComboboxDemo = ({ value, onChange, index, formulas }) => {
 };
 
 export default ComboboxDemo;
+
