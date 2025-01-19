@@ -130,7 +130,8 @@ const CapsuleForm = () => {
                                     onChange={(e) => updateIngredient(index, 'grams', e.target.value)}
                                     placeholder="g"
                                     className="w-16 sm:w-24 shrink-0"
-                                    min="1"
+                                    min="0.1"
+                                    step="0.1"
                                 />
                                 <Button
                                     variant="destructive"
