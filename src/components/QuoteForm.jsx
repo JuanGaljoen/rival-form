@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import PowderForm from './PowderForm';
 import CapsuleForm from './CapsuleForm';
+import { validateField } from '../lib/validators.jsx';
 
 const QuoteForm = () => {
     const [type, setType] = useState('');
@@ -26,61 +27,6 @@ const QuoteForm = () => {
 
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
-
-    const validateField = (name, value) => {
-        switch (name) {
-            case 'firstName':
-            case 'lastName':
-                return value.trim() ? '' : 'This field is required';
-
-            case 'email':
-                if (!value.trim()) return 'Email is required';
-                if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
-                    return 'Please enter a valid email address';
-                }
-                return '';
-
-            case 'confirmEmail':
-                if (!value.trim()) return 'Please confirm your email';
-                if (value !== formData.email) {
-                    return 'Emails do not match';
-                }
-                return '';
-
-            case 'companyName':
-                return value.trim() ? '' : 'Company name is required';
-
-            case 'companyWebsite':
-                if (!value) return ''; // Optional field
-                if (!/^https?:\/\/.+\..+/.test(value)) {
-                    return 'Please enter a valid URL (include http:// or https://)';
-                }
-                return '';
-
-            case 'city':
-                return value.trim() ? '' : 'City is required';
-
-            case 'state':
-                if (!value.trim()) return 'State is required';
-                if (!/^[A-Za-z]{2}$/.test(value)) {
-                    return 'Please use 2-letter state code';
-                }
-                return '';
-
-            case 'zipCode':
-                if (!value.trim()) return 'ZIP code is required';
-                if (!/^\d{5}(-\d{4})?$/.test(value)) {
-                    return 'Please enter a valid ZIP code';
-                }
-                return '';
-
-            case 'hasExistingProduct':
-                return value ? '' : 'Please select an option';
-
-            default:
-                return '';
-        }
-    };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -118,7 +64,7 @@ const QuoteForm = () => {
         <Card className="w-full max-w-2xl mx-auto">
             <CardContent className="space-y-6 p-6">
                 {/* Basic Information Section */}
-                <div className="space-y-4">
+                {/* <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Basic Information</h3>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="space-y-2">
@@ -302,7 +248,7 @@ const QuoteForm = () => {
                     {errors.hasExistingProduct && touched.hasExistingProduct &&
                         <p className="text-sm text-red-500">{errors.hasExistingProduct}</p>
                     }
-                </div>
+                </div> */}
 
                 {/* Product Type Section */}
                 <div className="space-y-4 pt-6 border-t">
