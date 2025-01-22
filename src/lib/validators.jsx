@@ -1,4 +1,4 @@
-export const validateField = (name, value) => {
+export const validateField = (name, value, allValues) => {
     switch (name) {
         case 'firstName':
         case 'lastName':
@@ -13,7 +13,7 @@ export const validateField = (name, value) => {
 
         case 'confirmEmail':
             if (!value.trim()) return 'Please confirm your email';
-            if (value !== formData.email) {
+            if (value !== allValues.email) {
                 return 'Emails do not match';
             }
             return '';
@@ -52,4 +52,3 @@ export const validateField = (name, value) => {
             return '';
     }
 };
-
