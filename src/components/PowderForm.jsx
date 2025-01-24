@@ -12,14 +12,17 @@ import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
-const PowderForm = () => {
-    const [formData, setFormData] = useState({
-        type: '',
-        flavorProfile: '',
-        servings: '',
-        quantity: '1', // Added quantity field with default value of 1
-        ingredients: [],
-    });
+const PowderForm = ({ formData, setFormData }) => {
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            productDetails: {
+                ...prev.productDetails,
+                [name]: value
+            }
+        }));
+    };
 
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
@@ -43,23 +46,32 @@ const PowderForm = () => {
     const addIngredient = () => {
         setFormData(prev => ({
             ...prev,
-            ingredients: [...prev.ingredients, { formula: '', grams: '' }]
+            productDetails: {
+                ...prev.productDetails,
+                ingredients: [...(prev.productDetails.ingredients || []), { formula: '', grams: '' }]
+            }
         }));
     };
 
     const removeIngredient = (index) => {
         setFormData(prev => ({
             ...prev,
-            ingredients: prev.ingredients.filter((_, i) => i !== index)
+            productDetails: {
+                ...prev.productDetails,
+                ingredients: (prev.productDetails.ingredients || []).filter((_, i) => i !== index)
+            }
         }));
     };
 
     const updateIngredient = (index, field, value) => {
         setFormData(prev => ({
             ...prev,
-            ingredients: prev.ingredients.map((ing, i) =>
-                i === index ? { ...ing, [field]: value } : ing
-            )
+            productDetails: {
+                ...prev.productDetails,
+                ingredients: (prev.productDetails.ingredients || []).map((ing, i) =>
+                    i === index ? { ...ing, [field]: value } : ing
+                )
+            }
         }));
     };
 
@@ -94,6 +106,33 @@ const PowderForm = () => {
         return Math.floor(1000 / totalWeightPerServing);
     };
 
+    useEffect(() => {
+        setFormData(prev => ({
+            ...prev,
+            productDetails: {
+                ...prev.productDetails,
+                totalCost: parseFloat(calculateTotal())
+            }
+        }));
+    }, [formData.ingredients, formData.servings, formData.quantity, formData.flavorProfile]);
+
+    useEffect(() => {
+        const weightPerServing = formData.ingredients.reduce((sum, ing) =>
+            sum + (parseInt(ing.grams) || 0), 0);
+        setTotalWeightPerServing(weightPerServing);
+
+        const containerWeight = weightPerServing * (parseInt(formData.servings) || 0);
+        setTotalContainerWeight(containerWeight);
+
+        setFormData(prev => ({
+            ...prev,
+            productDetails: {
+                ...prev.productDetails,
+                totalIngredientWeight: containerWeight
+            }
+        }));
+    }, [formData.ingredients, formData.servings]);
+
     return (
         <Card className="w-full max-w-2xl mx-auto border-none shadow-none">
             <CardContent className="space-y-6 p-0">
@@ -101,7 +140,15 @@ const PowderForm = () => {
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold p-4">2. Choose Flavor Profile</h3>
                     <RadioGroup
-                        onValueChange={(value) => setFormData(prev => ({ ...prev, flavorProfile: value }))}
+                        onValueChange={(value) => {
+                            setFormData(prev => ({
+                                ...prev,
+                                productDetails: {
+                                    ...prev.productDetails,
+                                    flavorProfile: value
+                                }
+                            }));
+                        }}
                         value={formData.flavorProfile}
                         className="space-y-2"
                     >
@@ -120,11 +167,13 @@ const PowderForm = () => {
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">3. Number of Servings per Container</h3>
                     <Input
+                        id="servings"
+                        name="servings"
                         type="number"
                         min="1"
                         max={calculateMaxServings()}
-                        value={formData.servings}
-                        onChange={(e) => setFormData(prev => ({ ...prev, servings: e.target.value }))}
+                        value={formData.servings || ''}
+                        onChange={handleInputChange}
                         placeholder="Enter number of servings"
                         className="max-w-xs"
                     />
@@ -181,6 +230,7 @@ const PowderForm = () => {
                             onClick={addIngredient}
                             variant="outline"
                             className="mt-2"
+                            type="button"
                         >
                             Add Ingredient
                         </Button>
@@ -195,10 +245,12 @@ const PowderForm = () => {
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">4. Quantity</h3>
                     <Input
+                        id="quantity"
+                        name="quantity"
                         type="number"
                         min="1"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData(prev => ({ ...prev, quantity: e.target.value }))}
+                        value={formData.quantity || ''}
+                        onChange={handleInputChange}
                         placeholder="Enter number of containers"
                         className="max-w-xs"
                     />

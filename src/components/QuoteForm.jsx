@@ -27,12 +27,12 @@ const QuoteForm = () => {
         },
         productType: '',
         productDetails: {
-            // This will be populated by either PowderForm or CapsuleForm
             flavorProfile: '',
             servings: '',
-            quantity: '1',
+            quantity: '',
             ingredients: [],
-            // ... other product-specific details
+            totalCost: 0,
+            totalIngredientWeight: 0,
         }
     });
 
@@ -84,7 +84,7 @@ const QuoteForm = () => {
 
         const emailData = {
             ...formData.basicDetails,
-            productType: formData.productType,
+            ...formData.productType,
             productDetails: formData.productDetails,
         };
 
@@ -128,10 +128,7 @@ const QuoteForm = () => {
                     {formData.productType === 'powder' &&
                         <PowderForm
                             formData={formData.productDetails}
-                            setFormData={(productDetails) => setFormData(prev => ({
-                                ...prev,
-                                productDetails
-                            }))}
+                            setFormData={setFormData}
                         />
                     }
                     {formData.productType === 'capsule' &&
