@@ -62,7 +62,6 @@ const QuoteForm = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const newErrors = {};
         const basicDetails = formData.basicDetails;
 
@@ -140,7 +139,6 @@ const QuoteForm = () => {
                             }))}
                         />
                     }
-
                     <Button
                         type="submit"
                         className="w-full"
