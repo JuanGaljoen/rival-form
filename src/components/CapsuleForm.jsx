@@ -10,7 +10,7 @@ import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
-const CapsuleForm = ({ formData, setFormData }) => {
+const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeight, setTotalWeight] = useState(0);
     const [capsuleCount, setCapsuleCount] = useState(0);
 
@@ -171,6 +171,7 @@ const CapsuleForm = ({ formData, setFormData }) => {
                         onChange={handleInputChange}
                         placeholder="Enter number of bottles"
                         className="max-w-xs"
+                        required
                     />
                 </div>
 

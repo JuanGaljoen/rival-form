@@ -48,7 +48,17 @@ export const validateField = (name, value, allValues) => {
         case 'hasExistingProduct':
             return value ? '' : 'Please select an option';
 
+        case 'flavorProfile':
+            return value ? '' : 'Please select an option';
+
+        // case 'servings':
+        //     return value.trim() ? '' : 'Please enter amount of servings';
+
+        // case 'quantity':
+        //     return value.trim() ? '' : 'Please enter quantity';
         default:
             return '';
+
+
     }
 };

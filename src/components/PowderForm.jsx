@@ -12,7 +12,7 @@ import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
-const PowderForm = ({ formData, setFormData }) => {
+const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -23,6 +23,10 @@ const PowderForm = ({ formData, setFormData }) => {
             }
         }));
     };
+
+    // const getInputClassName = (fieldName) => {
+    //     return `${errors[fieldName] && touched[fieldName] ? 'border-red-500 focus:border-red-500' : ''}`;
+    // };
 
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
@@ -162,6 +166,9 @@ const PowderForm = ({ formData, setFormData }) => {
                             <Label htmlFor="artificial">Artificial</Label>
                         </div>
                     </RadioGroup>
+                    {errors.flavorProfile && touched.flavorProfile &&
+                        <p className="text-sm text-red-500">{errors.flavorProfile}</p>
+                    }
                 </div>
 
                 {/* Servings Section */}
@@ -177,6 +184,7 @@ const PowderForm = ({ formData, setFormData }) => {
                         onChange={handleInputChange}
                         placeholder="Enter number of servings"
                         className="max-w-xs"
+                        required
                     />
                     {totalWeightPerServing > 0 && (
                         <div className="text-sm text-slate-600">
@@ -253,6 +261,7 @@ const PowderForm = ({ formData, setFormData }) => {
                         onChange={handleInputChange}
                         placeholder="Enter number of containers"
                         className="max-w-xs"
+                        required
                     />
                 </div>
 
