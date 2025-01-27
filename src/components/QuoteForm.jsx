@@ -26,12 +26,19 @@ const QuoteForm = () => {
             zipCode: ''
         },
         productType: '',
-        productDetails: {
+        powderDetails: {
             flavorProfile: '',
             servings: '',
             quantity: '',
             ingredients: [],
             totalCost: 0,
+            totalIngredientWeight: 0,
+        },
+        capsuleDetails: {
+            quantity: '',
+            ingredients: [],
+            totalCost: 0,
+            totalCapsules: 0,
             totalIngredientWeight: 0,
         }
     });
@@ -84,7 +91,8 @@ const QuoteForm = () => {
         const emailData = {
             basicDetails: formData.basicDetails,
             productType: formData.productType,
-            productDetails: formData.productDetails,
+            powderDetails: formData.powderDetails,
+            capsuleDetails: formData.capsuleDetails
         };
 
         console.log('Form data to send:', emailData);
@@ -94,14 +102,13 @@ const QuoteForm = () => {
         <form onSubmit={handleSubmit}>
             <Card className="w-full max-w-2xl mx-auto">
                 <CardContent className="space-y-6 p-6">
-                    {/* <BasicDetailsForm
+                    <BasicDetailsForm
                         formData={formData.basicDetails}
                         setFormData={setFormData}
                         errors={errors}
                         touched={touched}
                         handleBlur={handleBlur}
-                    /> */}
-
+                    />
                     {/* Product Type Selection */}
                     <div className="space-y-4 pt-6 border-t">
                         <h3 className="text-lg font-semibold">Choose Product Type</h3>
@@ -126,17 +133,14 @@ const QuoteForm = () => {
 
                     {formData.productType === 'powder' &&
                         <PowderForm
-                            formData={formData.productDetails}
+                            formData={formData.powderDetails}
                             setFormData={setFormData}
                         />
                     }
                     {formData.productType === 'capsule' &&
                         <CapsuleForm
-                            formData={formData.productDetails}
-                            setFormData={(productDetails) => setFormData(prev => ({
-                                ...prev,
-                                productDetails
-                            }))}
+                            formData={formData.capsuleDetails}
+                            setFormData={setFormData}
                         />
                     }
                     <Button

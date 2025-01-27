@@ -5,18 +5,25 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
-const CapsuleForm = () => {
-    const [formData, setFormData] = useState({
-        quantity: '1', // Number of bottles
-        ingredients: [],
-    });
-
+const CapsuleForm = ({ formData, setFormData }) => {
     const [totalWeight, setTotalWeight] = useState(0);
     const [capsuleCount, setCapsuleCount] = useState(0);
+
+    const handleInputChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            capsuleDetails: {
+                ...prev.capsuleDetails,
+                [name]: value
+            }
+        }));
+    };
 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
@@ -25,37 +32,35 @@ const CapsuleForm = () => {
         return formulas.filter(f => !selectedFormulas.includes(f.formula));
     };
 
-    useEffect(() => {
-        // Calculate total milligrams directly
-        const weightInMg = formData.ingredients.reduce((sum, ing) =>
-            sum + (parseInt(ing.mg) || 0), 0);
-        setTotalWeight(weightInMg);
-
-        // Calculate capsules needed (600mg per capsule)
-        const capsules = Math.ceil(weightInMg / 600);
-        setCapsuleCount(capsules);
-    }, [formData.ingredients]);
-
     const addIngredient = () => {
         setFormData(prev => ({
             ...prev,
-            ingredients: [...prev.ingredients, { formula: '', mg: '' }]
+            capsuleDetails: {
+                ...prev.capsuleDetails,
+                ingredients: [...(prev.capsuleDetails.ingredients || []), { formula: '', mg: '' }]
+            }
         }));
     };
 
     const removeIngredient = (index) => {
         setFormData(prev => ({
             ...prev,
-            ingredients: prev.ingredients.filter((_, i) => i !== index)
+            capsuleDetails: {
+                ...prev.capsuleDetails,
+                ingredients: (prev.capsuleDetails.ingredients || []).filter((_, i) => i !== index)
+            }
         }));
     };
 
     const updateIngredient = (index, field, value) => {
         setFormData(prev => ({
             ...prev,
-            ingredients: prev.ingredients.map((ing, i) =>
-                i === index ? { ...ing, [field]: value } : ing
-            )
+            capsuleDetails: {
+                ...prev.capsuleDetails,
+                ingredients: (prev.capsuleDetails.ingredients || []).map((ing, i) =>
+                    i === index ? { ...ing, [field]: value } : ing
+                )
+            }
         }));
     };
 
@@ -66,32 +71,46 @@ const CapsuleForm = () => {
     };
 
     const calculateTotal = () => {
-        // Calculate ingredients cost (converting mg to grams for price calculation)
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            const grams = (parseInt(ing.mg) || 0) / 1000; // Convert mg to g for price calculation
+            const grams = (parseInt(ing.mg) || 0) / 1000;
             return sum + (pricePerGram * grams);
         }, 0);
 
-        // Calculate capsule cost ($0.007 per capsule)
         const capsuleCost = capsuleCount * 0.007;
-
-        // Calculate bottle cost based on total capsules
         const bottleCost = calculateBottleCost(capsuleCount);
-
         const singleBottlePrice = ingredientsCost + capsuleCost + bottleCost;
         const quantity = parseInt(formData.quantity) || 1;
 
         return (singleBottlePrice * quantity).toFixed(2);
     };
 
+    useEffect(() => {
+        const weightInMg = formData.ingredients.reduce((sum, ing) =>
+            sum + (parseInt(ing.mg) || 0), 0);
+        setTotalWeight(weightInMg);
+
+        const capsules = Math.ceil(weightInMg / 600);
+        setCapsuleCount(capsules);
+
+        setFormData(prev => ({
+            ...prev,
+            capsuleDetails: {
+                ...prev.capsuleDetails,
+                totalIngredientWeight: weightInMg,
+                totalCapsules: capsules,
+                totalCost: calculateTotal()
+            }
+        }));
+    }, [formData.ingredients, formData.quantity]);
+
     return (
         <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
             <CardContent className="space-y-6 p-0">
                 {/* Formula Builder Section */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Build Your Formula</h3>
+                    <h3 className="text-lg font-semibold">5. Build Your Formula</h3>
                     <div className="space-y-4">
                         {formData.ingredients.map((ingredient, index) => (
                             <div key={index} className="flex items-start space-x-4">
@@ -108,9 +127,8 @@ const CapsuleForm = () => {
                                     value={ingredient.mg}
                                     onChange={(e) => updateIngredient(index, 'mg', e.target.value)}
                                     placeholder="mg"
-                                    className="w-24 sm:w-32 shrink-0"
+                                    className="w-16 sm:w-24 shrink-0"
                                     min="1"
-                                    step="1"
                                 />
                                 <Button
                                     variant="destructive"
@@ -127,6 +145,7 @@ const CapsuleForm = () => {
                             onClick={addIngredient}
                             variant="outline"
                             className="mt-2"
+                            type="button"
                         >
                             Add Ingredient
                         </Button>
@@ -146,38 +165,47 @@ const CapsuleForm = () => {
                     <h3 className="text-lg font-semibold">Number of Bottles</h3>
                     <Input
                         type="number"
+                        name="quantity"
                         min="1"
-                        value={formData.quantity}
-                        onChange={(e) => setFormData(prev => ({ ...prev, quantity: e.target.value }))}
+                        value={formData.quantity || ''}
+                        onChange={handleInputChange}
                         placeholder="Enter number of bottles"
                         className="max-w-xs"
                     />
                 </div>
+
+                {/* Warning for capsule weight */}
+                {/* {totalWeight > 600 && (
+                    <Alert variant="destructive">
+                        <AlertDescription>
+                            Total ingredient weight ({totalWeight}mg) exceeds 600mg capsule limit.
+                            Please reduce ingredient amounts.
+                        </AlertDescription>
+                    </Alert>
+                )} */}
 
                 {/* Summary Section */}
                 {formData.ingredients.length > 0 && (
                     <div className="bg-slate-50 p-4 rounded-lg space-y-2">
                         <h3 className="text-lg font-semibold">Order Summary</h3>
                         <p>Product Type: <span className="font-medium">Capsules</span></p>
-                        {formData.ingredients.length > 0 && (
-                            <div className="space-y-1">
-                                <p className="font-medium">Ingredients:</p>
-                                {formData.ingredients.map((ing, index) => (
-                                    <p key={index} className="ml-4">
-                                        • {ing.formula}: {ing.mg}mg
-                                    </p>
-                                ))}
-                                <p className="ml-4 text-sm text-slate-600">
-                                    Total weight: {totalWeight}mg
-                                    <br />
-                                    Number of capsules: {capsuleCount}
+                        <div className="space-y-1">
+                            <p className="font-medium">Ingredients:</p>
+                            {formData.ingredients.map((ing, index) => (
+                                <p key={index} className="ml-4">
+                                    • {ing.formula}: {ing.mg}mg
                                 </p>
-                            </div>
-                        )}
+                            ))}
+                            <p className="ml-4 text-sm text-slate-600">
+                                Total weight: {totalWeight}mg
+                                <br />
+                                Number of capsules: {capsuleCount}
+                            </p>
+                        </div>
                         <p>Number of bottles: <span className="font-medium">{formData.quantity}</span></p>
                         {capsuleCount > 0 && (
                             <div className="mt-4 space-y-1">
-                                <p className="text-lg font-semibold">Total Price: ${calculateTotal()}</p>
+                                <p className="text-lg font-semibold">Total Price: ${formData.totalCost}</p>
                                 <p className="text-sm text-slate-600">
                                     (For {formData.quantity} bottle{parseInt(formData.quantity) > 1 ? 's' : ''})
                                 </p>
