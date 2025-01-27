@@ -82,8 +82,8 @@ const QuoteForm = () => {
         }
 
         const emailData = {
-            ...formData.basicDetails,
-            ...formData.productType,
+            basicDetails: formData.basicDetails,
+            productType: formData.productType,
             productDetails: formData.productDetails,
         };
 
@@ -94,13 +94,13 @@ const QuoteForm = () => {
         <form onSubmit={handleSubmit}>
             <Card className="w-full max-w-2xl mx-auto">
                 <CardContent className="space-y-6 p-6">
-                    <BasicDetailsForm
+                    {/* <BasicDetailsForm
                         formData={formData.basicDetails}
                         setFormData={setFormData}
                         errors={errors}
                         touched={touched}
                         handleBlur={handleBlur}
-                    />
+                    /> */}
 
                     {/* Product Type Selection */}
                     <div className="space-y-4 pt-6 border-t">

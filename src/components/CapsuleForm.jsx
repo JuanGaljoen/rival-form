@@ -3,24 +3,20 @@ import {
     Card,
     CardContent,
 } from "@/components/ui/card";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
 const CapsuleForm = () => {
     const [formData, setFormData] = useState({
-        servings: '',
         quantity: '1', // Number of bottles
         ingredients: [],
     });
 
-    const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
-    const [capsulesPerServing, setCapsulesPerServing] = useState(0);
-    const [totalCapsulesPerBottle, setTotalCapsulesPerBottle] = useState(0);
+    const [totalWeight, setTotalWeight] = useState(0);
+    const [capsuleCount, setCapsuleCount] = useState(0);
 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
@@ -30,23 +26,20 @@ const CapsuleForm = () => {
     };
 
     useEffect(() => {
-        const weightPerServing = formData.ingredients.reduce((sum, ing) =>
-            sum + (parseInt(ing.grams) || 0), 0);
-        setTotalWeightPerServing(weightPerServing);
+        // Calculate total milligrams directly
+        const weightInMg = formData.ingredients.reduce((sum, ing) =>
+            sum + (parseInt(ing.mg) || 0), 0);
+        setTotalWeight(weightInMg);
 
-        // Calculate capsules needed per serving (600mg per capsule)
-        const capsules = Math.ceil(weightPerServing / 0.6); // 0.6g = 600mg
-        setCapsulesPerServing(capsules);
-
-        // Calculate total capsules per bottle
-        const totalCapsules = capsules * (parseInt(formData.servings) || 0);
-        setTotalCapsulesPerBottle(totalCapsules);
-    }, [formData.ingredients, formData.servings]);
+        // Calculate capsules needed (600mg per capsule)
+        const capsules = Math.ceil(weightInMg / 600);
+        setCapsuleCount(capsules);
+    }, [formData.ingredients]);
 
     const addIngredient = () => {
         setFormData(prev => ({
             ...prev,
-            ingredients: [...prev.ingredients, { formula: '', grams: '' }]
+            ingredients: [...prev.ingredients, { formula: '', mg: '' }]
         }));
     };
 
@@ -73,20 +66,19 @@ const CapsuleForm = () => {
     };
 
     const calculateTotal = () => {
-        if (!formData.servings) return 0;
-
-        // Calculate ingredients cost
+        // Calculate ingredients cost (converting mg to grams for price calculation)
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            return sum + (pricePerGram * (parseInt(ing.grams) || 0));
-        }, 0) * parseInt(formData.servings);
+            const grams = (parseInt(ing.mg) || 0) / 1000; // Convert mg to g for price calculation
+            return sum + (pricePerGram * grams);
+        }, 0);
 
         // Calculate capsule cost ($0.007 per capsule)
-        const capsuleCost = totalCapsulesPerBottle * 0.007;
+        const capsuleCost = capsuleCount * 0.007;
 
         // Calculate bottle cost based on total capsules
-        const bottleCost = calculateBottleCost(totalCapsulesPerBottle);
+        const bottleCost = calculateBottleCost(capsuleCount);
 
         const singleBottlePrice = ingredientsCost + capsuleCost + bottleCost;
         const quantity = parseInt(formData.quantity) || 1;
@@ -97,22 +89,9 @@ const CapsuleForm = () => {
     return (
         <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
             <CardContent className="space-y-6 p-0">
-                {/* Servings Section */}
-                <div className="space-y-4">
-                    <h3 className="text-lg font-semibold p-4">2. Number of Servings per Bottle</h3>
-                    <Input
-                        type="number"
-                        min="1"
-                        value={formData.servings}
-                        onChange={(e) => setFormData(prev => ({ ...prev, servings: e.target.value }))}
-                        placeholder="Enter number of servings"
-                        className="max-w-xs"
-                    />
-                </div>
-
                 {/* Formula Builder Section */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">4. Build Your Formula</h3>
+                    <h3 className="text-lg font-semibold">Build Your Formula</h3>
                     <div className="space-y-4">
                         {formData.ingredients.map((ingredient, index) => (
                             <div key={index} className="flex items-start space-x-4">
@@ -126,12 +105,12 @@ const CapsuleForm = () => {
                                 </div>
                                 <Input
                                     type="number"
-                                    value={ingredient.grams}
-                                    onChange={(e) => updateIngredient(index, 'grams', e.target.value)}
-                                    placeholder="g"
-                                    className="w-16 sm:w-24 shrink-0"
-                                    min="0.1"
-                                    step="0.1"
+                                    value={ingredient.mg}
+                                    onChange={(e) => updateIngredient(index, 'mg', e.target.value)}
+                                    placeholder="mg"
+                                    className="w-24 sm:w-32 shrink-0"
+                                    min="1"
+                                    step="1"
                                 />
                                 <Button
                                     variant="destructive"
@@ -152,19 +131,19 @@ const CapsuleForm = () => {
                             Add Ingredient
                         </Button>
                     </div>
-                    {totalWeightPerServing > 0 && (
+                    {totalWeight > 0 && (
                         <div className="text-sm text-slate-600 space-y-1">
-                            <p>Weight per serving: {totalWeightPerServing}g</p>
-                            <p>Capsules per serving: {capsulesPerServing}</p>
-                            <p>Total capsules per bottle: {totalCapsulesPerBottle}</p>
+                            <p>Total weight: {totalWeight}mg</p>
+                            <p>Number of capsules: {capsuleCount} (600mg per capsule)</p>
+                            <p>Bottle cost: ${calculateBottleCost(capsuleCount)}</p>
+                            <p>Capsule cost: ${(capsuleCount * 0.007).toFixed(3)}</p>
                         </div>
                     )}
                 </div>
 
-
                 {/* Quantity Section */}
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">3. Number of Bottles</h3>
+                    <h3 className="text-lg font-semibold">Number of Bottles</h3>
                     <Input
                         type="number"
                         min="1"
@@ -182,29 +161,21 @@ const CapsuleForm = () => {
                         <p>Product Type: <span className="font-medium">Capsules</span></p>
                         {formData.ingredients.length > 0 && (
                             <div className="space-y-1">
-                                <p className="font-medium">Ingredients per Serving:</p>
+                                <p className="font-medium">Ingredients:</p>
                                 {formData.ingredients.map((ing, index) => (
                                     <p key={index} className="ml-4">
-                                        • {ing.formula}: {ing.grams}g
+                                        • {ing.formula}: {ing.mg}mg
                                     </p>
                                 ))}
                                 <p className="ml-4 text-sm text-slate-600">
-                                    Total weight per serving: {totalWeightPerServing}g
+                                    Total weight: {totalWeight}mg
                                     <br />
-                                    Capsules per serving: {capsulesPerServing}
+                                    Number of capsules: {capsuleCount}
                                 </p>
                             </div>
                         )}
-                        {formData.servings && (
-                            <>
-                                <p>Servings per bottle: <span className="font-medium">{formData.servings}</span></p>
-                                <p>Number of bottles: <span className="font-medium">{formData.quantity}</span></p>
-                                <p className="text-sm text-slate-600">
-                                    Total capsules per bottle: {totalCapsulesPerBottle}
-                                </p>
-                            </>
-                        )}
-                        {totalCapsulesPerBottle > 0 && formData.servings && (
+                        <p>Number of bottles: <span className="font-medium">{formData.quantity}</span></p>
+                        {capsuleCount > 0 && (
                             <div className="mt-4 space-y-1">
                                 <p className="text-lg font-semibold">Total Price: ${calculateTotal()}</p>
                                 <p className="text-sm text-slate-600">
