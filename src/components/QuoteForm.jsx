@@ -91,7 +91,7 @@ const QuoteForm = () => {
             if (touched.ingredients || touched.formulaBuilder) {
                 const formulaErrors = validateFormula(powderDetails.ingredients);
                 if (formulaErrors.length > 0) {
-                    newErrors.ingredients = formulaErrors[0]; // Show first error
+                    newErrors.ingredients = formulaErrors[0];
                 }
             }
         }

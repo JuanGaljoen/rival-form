@@ -13,6 +13,16 @@ import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
 
 const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
+    const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
+    const [totalContainerWeight, setTotalContainerWeight] = useState(0);
+
+    const getAvailableFormulas = (currentIndex) => {
+        const selectedFormulas = formData.ingredients
+            .filter((_, index) => index !== currentIndex)
+            .map(ing => ing.formula);
+        return formulas.filter(f => !selectedFormulas.includes(f.formula));
+    };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -22,20 +32,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 [name]: value
             }
         }));
-    };
-
-    // const getInputClassName = (fieldName) => {
-    //     return `${errors[fieldName] && touched[fieldName] ? 'border-red-500 focus:border-red-500' : ''}`;
-    // };
-
-    const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
-    const [totalContainerWeight, setTotalContainerWeight] = useState(0);
-
-    const getAvailableFormulas = (currentIndex) => {
-        const selectedFormulas = formData.ingredients
-            .filter((_, index) => index !== currentIndex)
-            .map(ing => ing.formula);
-        return formulas.filter(f => !selectedFormulas.includes(f.formula));
     };
 
     useEffect(() => {
@@ -92,11 +88,11 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            const grams = (parseInt(ing.mg) || 0) / 1000; // Convert mg to g for price calculation
+            const grams = (parseInt(ing.mg) || 0) / 1000;
             return sum + (pricePerGram * grams);
         }, 0) * parseInt(formData.servings);
 
-        const packagingCost = calculatePackagingCost(totalContainerWeight / 1000); // Convert mg to g
+        const packagingCost = calculatePackagingCost(totalContainerWeight / 1000);
         const flavorCost = formData.flavorProfile === "natural" ? 2.50 :
             formData.flavorProfile === "artificial" ? 1.75 : 0;
 
@@ -108,7 +104,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
 
     const calculateMaxServings = () => {
         if (totalWeightPerServing === 0) return 999;
-        return Math.floor(1000 / (totalWeightPerServing / 1000)); // Convert mg to g
+        return Math.floor(1000 / (totalWeightPerServing / 1000));
     };
 
     useEffect(() => {
@@ -141,7 +137,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     return (
         <Card className="w-full max-w-2xl mx-auto border-none shadow-none">
             <CardContent className="space-y-6 p-0">
-                {/* Flavor Profile Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold p-4">2. Choose Flavor Profile</h3>
                     <RadioGroup
@@ -171,7 +166,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     }
                 </div>
 
-                {/* Servings Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">3. Number of Servings per Container</h3>
                     <Input
@@ -192,7 +186,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                             (based on {totalWeightPerServing}mg per serving)
                         </div>
                     )}
-                    {totalContainerWeight > 1000000 && ( // Convert limit to mg (1000g = 1,000,000mg)
+                    {totalContainerWeight > 1000000 && (
                         <Alert variant="destructive">
                             <AlertDescription>
                                 Total container weight ({totalContainerWeight}mg) exceeds 1000g limit.
@@ -202,7 +196,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     )}
                 </div>
 
-                {/* Formula Builder Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">5. Build Your Formula</h3>
                     <div className="space-y-4">
@@ -213,7 +206,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                         value={ingredient.formula}
                                         onChange={(index, field, value) => {
                                             updateIngredient(index, field, value);
-                                            // Mark as touched when changed
                                             handleBlur({ target: { name: 'ingredients' } });
                                         }}
                                         index={index}
@@ -225,7 +217,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                     value={ingredient.mg}
                                     onChange={(e) => {
                                         updateIngredient(index, 'mg', e.target.value);
-                                        // Mark as touched when changed
                                         handleBlur({ target: { name: 'ingredients' } });
                                     }}
                                     placeholder="mg"
@@ -247,7 +238,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                         <Button
                             onClick={() => {
                                 addIngredient();
-                                // Mark as touched when adding new ingredient
                                 handleBlur({ target: { name: 'ingredients' } });
                             }}
                             variant="outline"
@@ -266,7 +256,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     </p>
                 </div>
 
-                {/* Quantity Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">4. Quantity</h3>
                     <Input
@@ -282,7 +271,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     />
                 </div>
 
-                {/* Summary Section */}
                 {(formData.flavorProfile || formData.ingredients.length > 0) && (
                     <div className="bg-slate-50 p-4 rounded-lg space-y-2">
                         <h3 className="text-lg font-semibold">Order Summary</h3>

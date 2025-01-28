@@ -5,7 +5,6 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
 import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
@@ -108,7 +107,6 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
     return (
         <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
             <CardContent className="space-y-6 p-0">
-                {/* Formula Builder Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">5. Build Your Formula</h3>
                     <div className="space-y-4">
@@ -173,7 +171,6 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                     )}
                 </div>
 
-                {/* Quantity Section */}
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Number of Bottles</h3>
                     <Input
@@ -188,17 +185,6 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                     />
                 </div>
 
-                {/* Warning for capsule weight */}
-                {/* {totalWeight > 600 && (
-                    <Alert variant="destructive">
-                        <AlertDescription>
-                            Total ingredient weight ({totalWeight}mg) exceeds 600mg capsule limit.
-                            Please reduce ingredient amounts.
-                        </AlertDescription>
-                    </Alert>
-                )} */}
-
-                {/* Summary Section */}
                 {formData.ingredients.length > 0 && (
                     <div className="bg-slate-50 p-4 rounded-lg space-y-2">
                         <h3 className="text-lg font-semibold">Order Summary</h3>
