@@ -51,14 +51,43 @@ export const validateField = (name, value, allValues) => {
         case 'flavorProfile':
             return value ? '' : 'Please select an option';
 
-        // case 'servings':
-        //     return value.trim() ? '' : 'Please enter amount of servings';
+        case 'ingredients':
+            if (!Array.isArray(value) || value.length === 0) {
+                return 'At least one ingredient is required';
+            }
 
-        // case 'quantity':
-        //     return value.trim() ? '' : 'Please enter quantity';
-        default:
+            for (let i = 0; i < value.length; i++) {
+                const ingredient = value[i];
+                if (!ingredient.formula) {
+                    return `Please select an ingredient for row ${i + 1}`;
+                }
+                if (!ingredient.mg || parseInt(ingredient.mg) <= 0) {
+                    return `Please enter a valid weight for ${ingredient.formula || 'row ' + (i + 1)}`;
+                }
+            }
             return '';
 
-
+        default:
+            return '';
     }
+};
+
+export const validateFormula = (ingredients) => {
+    const errors = [];
+
+    if (!ingredients || ingredients.length === 0) {
+        errors.push('At least one ingredient is required');
+        return errors;
+    }
+
+    ingredients.forEach((ingredient, index) => {
+        if (!ingredient.formula) {
+            errors.push(`Please select an ingredient for row ${index + 1}`);
+        }
+        if (!ingredient.mg || parseInt(ingredient.mg) <= 0) {
+            errors.push(`Please enter a valid weight for ${ingredient.formula || 'row ' + (index + 1)}`);
+        }
+    });
+
+    return errors;
 };

@@ -211,7 +211,11 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                 <div className="flex-1 min-w-0">
                                     <ComboboxDemo
                                         value={ingredient.formula}
-                                        onChange={updateIngredient}
+                                        onChange={(index, field, value) => {
+                                            updateIngredient(index, field, value);
+                                            // Mark as touched when changed
+                                            handleBlur({ target: { name: 'ingredients' } });
+                                        }}
                                         index={index}
                                         formulas={getAvailableFormulas(index)}
                                     />
@@ -219,9 +223,14 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                 <Input
                                     type="number"
                                     value={ingredient.mg}
-                                    onChange={(e) => updateIngredient(index, 'mg', e.target.value)}
+                                    onChange={(e) => {
+                                        updateIngredient(index, 'mg', e.target.value);
+                                        // Mark as touched when changed
+                                        handleBlur({ target: { name: 'ingredients' } });
+                                    }}
                                     placeholder="mg"
-                                    className="w-16 sm:w-24 shrink-0"
+                                    className={`w-16 sm:w-24 shrink-0 ${errors.ingredients && !ingredient.mg ? 'border-red-500' : ''
+                                        }`}
                                     min="1"
                                 />
                                 <Button
@@ -236,13 +245,21 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                         ))}
 
                         <Button
-                            onClick={addIngredient}
+                            onClick={() => {
+                                addIngredient();
+                                // Mark as touched when adding new ingredient
+                                handleBlur({ target: { name: 'ingredients' } });
+                            }}
                             variant="outline"
                             className="mt-2"
                             type="button"
                         >
                             Add Ingredient
                         </Button>
+
+                        {errors.ingredients && touched.ingredients && (
+                            <p className="text-sm text-red-500">{errors.ingredients}</p>
+                        )}
                     </div>
                     <p className="text-sm text-slate-600">
                         Total weight per container: {totalContainerWeight}mg
