@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import ReCAPTCHA from "react-google-recaptcha";
 import {
     Card,
     CardContent,
@@ -6,6 +7,7 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
+
 import PowderForm from './PowderForm';
 import CapsuleForm from './CapsuleForm';
 import BasicDetailsForm from './BasicDetailsForm';
@@ -45,6 +47,18 @@ const QuoteForm = () => {
 
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
+    const [captchaToken, setCaptchaToken] = useState(null);
+    const recaptchaRef = useRef(null);
+
+    const handleCaptchaChange = (token) => {
+        setCaptchaToken(token);
+        if (token) {
+            setErrors((prev) => {
+                const { recaptcha, ...rest } = prev;
+                return rest;
+            });
+        }
+    };
 
     const handleBlur = (e) => {
         const { name } = e.target;
@@ -67,7 +81,6 @@ const QuoteForm = () => {
             }
         });
 
-        // Validation for powder details only if product type is "powder"
         if (formData.productType === 'powder') {
             Object.keys(powderDetails).forEach(key => {
                 if (touched[key]) {
@@ -83,7 +96,6 @@ const QuoteForm = () => {
             }
         }
 
-        // Validation for capsule details only if product type is "capsule"
         if (formData.productType === 'capsule') {
             Object.keys(capsuleDetails).forEach(key => {
                 if (touched[key]) {
@@ -114,7 +126,6 @@ const QuoteForm = () => {
             if (error) newErrors[key] = error;
         });
 
-        // Validation for powder details only if product type is "powder"
         if (formData.productType === 'powder') {
             Object.keys(powderDetails).forEach(key => {
                 const error = validateField(key, powderDetails[key], powderDetails);
@@ -126,7 +137,6 @@ const QuoteForm = () => {
             }
         }
 
-        // Validation for capsule details only if product type is "capsule"
         if (formData.productType === 'capsule') {
             Object.keys(capsuleDetails).forEach(key => {
                 const error = validateField(key, capsuleDetails[key], capsuleDetails);
@@ -154,7 +164,13 @@ const QuoteForm = () => {
             setTouched(newTouched);
             return;
         }
-
+        if (!captchaToken) {
+            setErrors(prev => ({
+                ...prev,
+                recaptcha: 'Please complete the reCAPTCHA verification'
+            }));
+            return;
+        }
         const emailData = {
             basicDetails: formData.basicDetails,
             productType: formData.productType,
@@ -176,7 +192,6 @@ const QuoteForm = () => {
                         touched={touched}
                         handleBlur={handleBlur}
                     />
-                    {/* Product Type Selection */}
                     <div className="space-y-4 pt-6 border-t">
                         <h3 className="text-lg font-semibold">Choose Product Type</h3>
                         <RadioGroup
@@ -216,6 +231,16 @@ const QuoteForm = () => {
                             handleBlur={handleBlur}
                         />
                     }
+                    <div className="flex justify-center items-center space-x-2 w-full sm:w-auto mx-auto">
+                        <ReCAPTCHA
+                            ref={recaptchaRef}
+                            sitekey={import.meta.env.VITE_SITE_KEY}
+                            onChange={handleCaptchaChange}
+                        />
+                    </div>
+                    {errors.recaptcha && (
+                        <p className="text-sm text-red-500">{errors.recaptcha}</p>
+                    )}
                     <Button
                         type="submit"
                         className="w-full"
