@@ -150,7 +150,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                         className={getInputClassName('state')}
-                        placeholder="CA"
+                        placeholder="TX"
                         maxLength={2}
                         required
                     />
