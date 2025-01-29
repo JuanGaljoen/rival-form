@@ -178,7 +178,26 @@ const QuoteForm = () => {
             capsuleDetails: formData.capsuleDetails
         };
 
-        console.log('Form data to send:', emailData);
+        try {
+            console.log('Form data to send:', emailData);
+
+            const response = await fetch(import.meta.env.VITE_LAMBDA_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(emailData),
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            console.log('Email sent successfully:', result);
+            alert('Your quote request has been sent.');
+        } catch (error) {
+            console.error('Error:', error);
+            alert('An unexpected error occurred. Please try again later.');
+        }
     };
 
     return (
