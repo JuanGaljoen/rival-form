@@ -176,33 +176,56 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                 </div>
             </div>
 
-            <div className="space-y-2">
-                <Label>Do you have an existing product line?</Label>
-                <RadioGroup
-                    onValueChange={(value) => {
-                        setFormData(prev => ({
-                            ...prev,
-                            basicDetails: {
-                                ...prev.basicDetails,
-                                hasExistingProduct: value
-                            }
-                        }));
-                    }}
-                    value={formData.hasExistingProduct}
-                    className="flex space-x-4"
-                >
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="yes" id="existingYes" />
-                        <Label htmlFor="existingYes">Yes</Label>
+            <div className="space-y-4">
+                <div className="space-y-2">
+                    <Label>Do you have an existing product line?</Label>
+                    <RadioGroup
+                        onValueChange={(value) => {
+                            setFormData(prev => ({
+                                ...prev,
+                                basicDetails: {
+                                    ...prev.basicDetails,
+                                    hasExistingProduct: value,
+                                    ...(value === "no" && { existingProductLink: "" })
+                                }
+                            }));
+                        }}
+                        value={formData.hasExistingProduct}
+                        className="flex space-x-4"
+                    >
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="yes" id="existingYes" />
+                            <Label htmlFor="existingYes">Yes</Label>
+                        </div>
+                        <div className="flex items-center space-x-2">
+                            <RadioGroupItem value="no" id="existingNo" />
+                            <Label htmlFor="existingNo">No</Label>
+                        </div>
+                    </RadioGroup>
+                    {errors.hasExistingProduct && touched.hasExistingProduct &&
+                        <p className="text-sm text-red-500">{errors.hasExistingProduct}</p>
+                    }
+                </div>
+
+                {formData.hasExistingProduct === "yes" && (
+                    <div className="space-y-2">
+                        <Label htmlFor="existingProductLink">Existing Product Link</Label>
+                        <Input
+                            id="existingProductLink"
+                            name="existingProductLink"
+                            type="url"
+                            placeholder="https://"
+                            value={formData.existingProductLink || ''}
+                            onChange={handleInputChange}
+                            onBlur={handleBlur}
+                            className={getInputClassName('existingProductLink')}
+                            required
+                        />
+                        {errors.existingProductLink && touched.existingProductLink &&
+                            <p className="text-sm text-red-500">{errors.existingProductLink}</p>
+                        }
                     </div>
-                    <div className="flex items-center space-x-2">
-                        <RadioGroupItem value="no" id="existingNo" />
-                        <Label htmlFor="existingNo">No</Label>
-                    </div>
-                </RadioGroup>
-                {errors.hasExistingProduct && touched.hasExistingProduct &&
-                    <p className="text-sm text-red-500">{errors.hasExistingProduct}</p>
-                }
+                )}
             </div>
         </div>
     );
