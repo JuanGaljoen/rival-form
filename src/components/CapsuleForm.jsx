@@ -165,7 +165,7 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                     </div>
                     {totalWeight > 0 && (
                         <div className="text-sm text-slate-600 space-y-1">
-                            <p>Total weight per bottle: {formatToGrams(totalWeight)}mg</p>
+                            <p>Total weight per bottle: {formatToGrams(totalWeight)}g</p>
                             <p>Number of capsules: {capsuleCount} (600mg per capsule)</p>
                             {/* <p>Bottle cost: ${calculateBottleCost(capsuleCount)}</p>
                             <p>Capsule cost: ${(capsuleCount * 0.007).toFixed(3)}</p> */}
@@ -199,7 +199,7 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                                 </p>
                             ))}
                             <p className="ml-4 text-sm text-slate-600">
-                                Total weight per bottle: {formatToGrams(totalWeight)}mg
+                                Total weight per bottle: {formatToGrams(totalWeight)}g
                                 <br />
                                 Number of capsules: {capsuleCount}
                             </p>
