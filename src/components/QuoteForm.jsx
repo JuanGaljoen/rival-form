@@ -14,7 +14,7 @@ import BasicDetailsForm from './BasicDetailsForm';
 import { validateField, validateFormula } from '../lib/validators.jsx';
 
 const QuoteForm = () => {
-    const [formData, setFormData] = useState({
+    const initialFormState = {
         basicDetails: {
             firstName: '',
             lastName: '',
@@ -44,12 +44,24 @@ const QuoteForm = () => {
             totalCapsules: 0,
             totalIngredientWeight: 0,
         }
-    });
+    };
 
     const [errors, setErrors] = useState({});
     const [touched, setTouched] = useState({});
     const [captchaToken, setCaptchaToken] = useState(null);
     const recaptchaRef = useRef(null);
+    const [formData, setFormData] = useState(initialFormState);
+
+    const resetForm = () => {
+        setFormData(initialFormState);
+        setErrors({});
+        setTouched({});
+        setCaptchaToken(null);
+        if (recaptchaRef.current) {
+            recaptchaRef.current.reset();
+        }
+    };
+
 
     const handleCaptchaChange = (token) => {
         setCaptchaToken(token);
@@ -195,6 +207,7 @@ const QuoteForm = () => {
             const result = await response.json();
             console.log('Email sent successfully:', result);
             alert('Your quote request has been sent.');
+            resetForm();
         } catch (error) {
             console.error('Error:', error);
             alert('An unexpected error occurred. Please try again later.');
