@@ -13,6 +13,8 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
     const [totalWeight, setTotalWeight] = useState(0);
     const [capsuleCount, setCapsuleCount] = useState(0);
 
+    const formatToGrams = (mg) => (mg / 1000).toFixed(2);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
@@ -163,10 +165,10 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                     </div>
                     {totalWeight > 0 && (
                         <div className="text-sm text-slate-600 space-y-1">
-                            <p>Total weight: {totalWeight}mg</p>
+                            <p>Total weight per bottle: {formatToGrams(totalWeight)}mg</p>
                             <p>Number of capsules: {capsuleCount} (600mg per capsule)</p>
-                            <p>Bottle cost: ${calculateBottleCost(capsuleCount)}</p>
-                            <p>Capsule cost: ${(capsuleCount * 0.007).toFixed(3)}</p>
+                            {/* <p>Bottle cost: ${calculateBottleCost(capsuleCount)}</p>
+                            <p>Capsule cost: ${(capsuleCount * 0.007).toFixed(3)}</p> */}
                         </div>
                     )}
                 </div>
@@ -197,7 +199,7 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                                 </p>
                             ))}
                             <p className="ml-4 text-sm text-slate-600">
-                                Total weight: {totalWeight}mg
+                                Total weight per bottle: {formatToGrams(totalWeight)}mg
                                 <br />
                                 Number of capsules: {capsuleCount}
                             </p>
