@@ -23,6 +23,7 @@ const QuoteForm = () => {
             companyName: '',
             companyWebsite: '',
             hasExistingProduct: '',
+            existingProductLink: '',
             city: '',
             state: '',
             zipCode: ''

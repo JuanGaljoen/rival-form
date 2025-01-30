@@ -16,6 +16,8 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
 
+    const formatToGrams = (mg) => (mg / 1000).toFixed(2);
+
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
             .filter((_, index) => index !== currentIndex)
@@ -252,7 +254,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                         )}
                     </div>
                     <p className="text-sm text-slate-600">
-                        Total weight per container: {totalContainerWeight}mg
+                        Total weight per container: {formatToGrams(totalContainerWeight)}g
                     </p>
                 </div>
 
@@ -286,9 +288,9 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                         • {ing.formula}: {ing.mg}mg
                                     </p>
                                 ))}
-                                <p className="ml-4 text-sm text-slate-600">
+                                {/* <p className="ml-4 text-sm text-slate-600">
                                     Total weight per serving: {totalWeightPerServing}mg
-                                </p>
+                                </p> */}
                             </div>
                         )}
                         {formData.servings && (
@@ -296,7 +298,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                 <p>Servings per container: <span className="font-medium">{formData.servings}</span></p>
                                 <p>Number of containers: <span className="font-medium">{formData.quantity}</span></p>
                                 <p className="text-sm text-slate-600">
-                                    Total weight per container: {totalContainerWeight}mg
+                                    Total weight per container: {formatToGrams(totalContainerWeight)}g
                                 </p>
                             </>
                         )}
