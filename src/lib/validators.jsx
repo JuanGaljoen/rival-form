@@ -48,6 +48,9 @@ export const validateField = (name, value, allValues) => {
         case 'hasExistingProduct':
             return value ? '' : 'Please select an option';
 
+        case 'productType':
+            return value ? '' : 'Please select a product type';
+
         case 'flavorProfile':
             return value ? '' : 'Please select an option';
 
