@@ -140,7 +140,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         <Card className="w-full max-w-2xl mx-auto border-none shadow-none">
             <CardContent className="space-y-6 p-0">
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold p-4">2. Choose Flavor Profile</h3>
+                    <h3 className="text-lg font-semibold p-4">Choose Flavor Profile</h3>
                     <RadioGroup
                         onValueChange={(value) => {
                             setFormData(prev => ({
@@ -169,7 +169,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">3. Number of Servings per Container</h3>
+                    <h3 className="text-lg font-semibold"> Number of Servings per Container</h3>
                     <Input
                         id="servings"
                         name="servings"
@@ -199,7 +199,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">5. Build Your Formula</h3>
+                    <h3 className="text-lg font-semibold">Build Your Formula</h3>
                     <div className="space-y-4">
                         {formData.ingredients.map((ingredient, index) => (
                             <div key={index} className="flex items-start space-x-4">
@@ -259,7 +259,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 </div>
 
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">4. Quantity</h3>
+                    <h3 className="text-lg font-semibold">Quantity</h3>
                     <Input
                         id="quantity"
                         name="quantity"

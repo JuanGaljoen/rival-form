@@ -110,7 +110,7 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
         <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
             <CardContent className="space-y-6 p-0">
                 <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">5. Build Your Formula</h3>
+                    <h3 className="text-lg font-semibold">Build Your Formula</h3>
                     <div className="space-y-4">
                         {formData.ingredients.map((ingredient, index) => (
                             <div key={index} className="flex items-start space-x-4">
