@@ -162,6 +162,7 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                         {errors.ingredients && touched.ingredients && (
                             <p className="text-sm text-red-500">{errors.ingredients}</p>
                         )}
+
                     </div>
                     {totalWeight > 0 && (
                         <div className="text-sm text-slate-600 space-y-1">
