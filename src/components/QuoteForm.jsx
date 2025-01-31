@@ -26,9 +26,9 @@ const QuoteForm = () => {
             existingProductLink: '',
             city: '',
             state: '',
-            zipCode: ''
+            zipCode: '',
+            productType: '',
         },
-        productType: '',
         powderDetails: {
             flavorProfile: '',
             servings: '',
@@ -94,7 +94,7 @@ const QuoteForm = () => {
             }
         });
 
-        if (formData.productType === 'powder') {
+        if (formData.basicDetails.productType === 'powder') {
             Object.keys(powderDetails).forEach(key => {
                 if (touched[key]) {
                     const error = validateField(key, powderDetails[key], powderDetails);
@@ -109,7 +109,7 @@ const QuoteForm = () => {
             }
         }
 
-        if (formData.productType === 'capsule') {
+        if (formData.basicDetails.productType === 'capsule') {
             Object.keys(capsuleDetails).forEach(key => {
                 if (touched[key]) {
                     const error = validateField(key, capsuleDetails[key], capsuleDetails);
@@ -125,7 +125,7 @@ const QuoteForm = () => {
         }
 
         setErrors(newErrors);
-    }, [formData.basicDetails, formData.powderDetails, formData.capsuleDetails, touched, formData.productType]);
+    }, [formData.basicDetails, formData.powderDetails, formData.capsuleDetails, touched]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -139,7 +139,7 @@ const QuoteForm = () => {
             if (error) newErrors[key] = error;
         });
 
-        if (formData.productType === 'powder') {
+        if (formData.basicDetails.productType === 'powder') {
             Object.keys(powderDetails).forEach(key => {
                 const error = validateField(key, powderDetails[key], powderDetails);
                 if (error) newErrors[key] = error;
@@ -150,7 +150,7 @@ const QuoteForm = () => {
             }
         }
 
-        if (formData.productType === 'capsule') {
+        if (formData.basicDetails.productType === 'capsule') {
             Object.keys(capsuleDetails).forEach(key => {
                 const error = validateField(key, capsuleDetails[key], capsuleDetails);
                 if (error) newErrors[key] = error;
@@ -225,28 +225,8 @@ const QuoteForm = () => {
                         touched={touched}
                         handleBlur={handleBlur}
                     />
-                    <div className="space-y-4 pt-6 border-t">
-                        <h3 className="text-lg font-semibold">Choose Product Type</h3>
-                        <RadioGroup
-                            onValueChange={(value) => setFormData(prev => ({
-                                ...prev,
-                                productType: value
-                            }))}
-                            value={formData.productType}
-                            className="space-y-2"
-                        >
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="powder" id="powder" />
-                                <Label htmlFor="powder">Powder</Label>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <RadioGroupItem value="capsule" id="capsule" />
-                                <Label htmlFor="capsule">Capsule</Label>
-                            </div>
-                        </RadioGroup>
-                    </div>
 
-                    {formData.productType === 'powder' &&
+                    {formData.basicDetails.productType === 'powder' &&
                         <PowderForm
                             formData={formData.powderDetails}
                             setFormData={setFormData}
@@ -255,7 +235,8 @@ const QuoteForm = () => {
                             handleBlur={handleBlur}
                         />
                     }
-                    {formData.productType === 'capsule' &&
+
+                    {formData.basicDetails.productType === 'capsule' &&
                         <CapsuleForm
                             formData={formData.capsuleDetails}
                             setFormData={setFormData}
@@ -264,6 +245,7 @@ const QuoteForm = () => {
                             handleBlur={handleBlur}
                         />
                     }
+
                     <div className="flex justify-center items-center space-x-2 w-full sm:w-auto mx-auto">
                         <ReCAPTCHA
                             ref={recaptchaRef}
@@ -274,6 +256,7 @@ const QuoteForm = () => {
                     {errors.recaptcha && (
                         <p className="text-sm text-red-500">{errors.recaptcha}</p>
                     )}
+
                     <Button
                         type="submit"
                         className="w-full"

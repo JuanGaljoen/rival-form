@@ -39,6 +39,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.firstName}</p>
                     }
                 </div>
+
                 <div className="space-y-2">
                     <Label htmlFor="lastName">Last Name</Label>
                     <Input
@@ -73,6 +74,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.email}</p>
                     }
                 </div>
+
                 <div className="space-y-2">
                     <Label htmlFor="confirmEmail">Confirm Email Address</Label>
                     <Input
@@ -107,6 +109,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.companyName}</p>
                     }
                 </div>
+
                 <div className="space-y-2">
                     <Label htmlFor="companyWebsite">Company Website</Label>
                     <Input
@@ -141,6 +144,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.city}</p>
                     }
                 </div>
+
                 <div className="space-y-2">
                     <Label htmlFor="state">State</Label>
                     <Input
@@ -158,6 +162,7 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.state}</p>
                     }
                 </div>
+
                 <div className="space-y-2">
                     <Label htmlFor="zipCode">ZIP Code</Label>
                     <Input
@@ -206,7 +211,6 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         <p className="text-sm text-red-500">{errors.hasExistingProduct}</p>
                     }
                 </div>
-
                 {formData.hasExistingProduct === "yes" && (
                     <div className="space-y-2">
                         <Label htmlFor="existingProductLink">Existing Product Link</Label>
@@ -226,6 +230,35 @@ const BasicDetailsForm = ({ formData, setFormData, errors, touched, handleBlur }
                         }
                     </div>
                 )}
+            </div>
+
+            <div className="space-y-4 pt-6 border-t">
+                <h3 className="text-lg font-semibold">Choose Product Type</h3>
+                <RadioGroup
+                    onValueChange={(value) => {
+                        setFormData(prev => ({
+                            ...prev,
+                            basicDetails: {
+                                ...prev.basicDetails,
+                                productType: value
+                            }
+                        }));
+                    }}
+                    value={formData.productType}
+                    className="space-y-2"
+                >
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="powder" id="powder" />
+                        <Label htmlFor="powder">Powder</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="capsule" id="capsule" />
+                        <Label htmlFor="capsule">Capsule</Label>
+                    </div>
+                </RadioGroup>
+                {errors.productType && touched.productType &&
+                    <p className="text-sm text-red-500">{errors.productType}</p>
+                }
             </div>
         </div>
     );
