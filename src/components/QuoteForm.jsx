@@ -62,7 +62,6 @@ const QuoteForm = () => {
         }
     };
 
-
     const handleCaptchaChange = (token) => {
         setCaptchaToken(token);
         if (token) {
