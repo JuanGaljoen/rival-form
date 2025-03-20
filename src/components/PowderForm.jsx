@@ -78,24 +78,27 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     };
 
     const calculatePackagingCost = (totalWeightInGrams) => {
-        if (totalWeightInGrams <= 300) return 2.80;
-        if (totalWeightInGrams <= 500) return 4.00;
-        if (totalWeightInGrams <= 1000) return 5.20;
+        if (totalWeightInGrams <= 300) return 6.90;
+        if (totalWeightInGrams <= 500) return 7.70;
+        if (totalWeightInGrams <= 1000) return 9.00;
         return 0;
     };
 
     const calculateTotal = () => {
         if (!formData.servings) return 0;
 
+        // Calculate ingredients cost per serving and multiply by number of servings
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            const grams = (parseInt(ing.mg) || 0) / 1000;
+            const grams = (parseInt(ing.mg) || 0) / 1000; // Convert mg to grams
             return sum + (pricePerGram * grams);
-        }, 0) * parseInt(formData.servings);
+        }, 0) * parseInt(formData.servings); // Multiply by number of servings
 
+        // Packaging cost based on weight (includes bottle, lid, box, scoop)
         const packagingCost = calculatePackagingCost(totalContainerWeight / 1000);
-        const flavorCost = formData.flavorProfile === "natural" ? 2.50 :
+
+        const flavorCost = formData.flavorProfile === "natural" ? 1.50 :
             formData.flavorProfile === "artificial" ? 1.75 : 0;
 
         const singleContainerPrice = ingredientsCost + packagingCost + flavorCost;
