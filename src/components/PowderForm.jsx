@@ -171,26 +171,30 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     }
                 </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-lg font-semibold"> Number of Servings per Container</h3>
-                    <Input
-                        id="servings"
-                        name="servings"
-                        type="number"
-                        min="1"
-                        max={calculateMaxServings()}
-                        value={formData.servings || ''}
-                        onChange={handleInputChange}
-                        placeholder="Enter number of servings"
-                        className="max-w-xs"
-                        required
-                    />
+                <div className="space-y-4 text-center">
+                    <h3 className="text-lg font-semibold">Number of Servings per Container</h3>
+
+                    <div className="flex justify-center">
+                        <Input
+                            id="servings"
+                            name="servings"
+                            type="number"
+                            min="1"
+                            max={calculateMaxServings()}
+                            value={formData.servings || ''}
+                            onChange={handleInputChange}
+                            placeholder="Enter number of servings"
+                            className="max-w-xs"
+                            required
+                        />
+                    </div>
+
                     {totalWeightPerServing > 0 && (
                         <div className="text-sm text-slate-600">
-                            Maximum servings possible: {calculateMaxServings()}
-                            (based on {totalWeightPerServing}mg per serving)
+                            Maximum servings possible: {calculateMaxServings()} (based on {totalWeightPerServing}mg per serving)
                         </div>
                     )}
+
                     {totalContainerWeight > 1000000 && (
                         <Alert variant="destructive">
                             <AlertDescription>
@@ -261,19 +265,21 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     </p>
                 </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-lg font-semibold">Quantity</h3>
-                    <Input
-                        id="quantity"
-                        name="quantity"
-                        type="number"
-                        min="1"
-                        value={formData.quantity || ''}
-                        onChange={handleInputChange}
-                        placeholder="Enter number of containers"
-                        className="max-w-xs"
-                        required
-                    />
+                <div className="flex justify-center">
+                    <div className="space-y-4">
+                        <h3 className="text-lg font-semibold">Quantity</h3>
+                        <Input
+                            id="quantity"
+                            name="quantity"
+                            type="number"
+                            min="1"
+                            value={formData.quantity || ''}
+                            onChange={handleInputChange}
+                            placeholder="Enter number of containers"
+                            className="max-w-xs"
+                            required
+                        />
+                    </div>
                 </div>
 
                 {(formData.flavorProfile || formData.ingredients.length > 0) && (

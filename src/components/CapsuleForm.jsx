@@ -176,16 +176,18 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
 
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Number of Bottles</h3>
-                    <Input
-                        type="number"
-                        name="quantity"
-                        min="1"
-                        value={formData.quantity || ''}
-                        onChange={handleInputChange}
-                        placeholder="Enter number of bottles"
-                        className="max-w-xs"
-                        required
-                    />
+                    <div className='flex justify-center'>
+                        <Input
+                            type="number"
+                            name="quantity"
+                            min="1"
+                            value={formData.quantity || ''}
+                            onChange={handleInputChange}
+                            placeholder="Enter number of bottles"
+                            className="max-w-xs"
+                            required
+                        />
+                    </div>
                 </div>
 
                 {formData.ingredients.length > 0 && (
