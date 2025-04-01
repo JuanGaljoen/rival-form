@@ -17,6 +17,18 @@ This project is a dynamic quote generator built for Rival Labs, a supplement com
 - **Frontend**: React, ShadCN/UI
 - **Backend**: AWS Lambda (Node.js), Amazon SES
 - **Hosting & Deployment**: Embedded in WordPress
+  
+```mermaid
+flowchart LR
+    Form[Frontend React + ShadCN/UI] --> Lambda[AWS Lambda Node.js]
+    Lambda --> SES[Amazon SES Email Delivery]
+    WordPress[WordPress Site] --> Form
+
+    style Form fill:#d1e7dd,stroke:#198754,stroke-width:2px,color:black
+    style Lambda fill:#cfe2ff,stroke:#0d6efd,stroke-width:2px,color:black
+    style SES fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:black
+    style WordPress fill:#e2e3e5,stroke:#6c757d,stroke-width:2px,color:black
+```
 
 ## How It Works
 
