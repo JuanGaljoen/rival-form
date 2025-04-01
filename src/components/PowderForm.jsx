@@ -265,9 +265,10 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                     </p>
                 </div>
 
-                <div className="flex justify-center">
-                    <div className="space-y-4">
-                        <h3 className="text-lg font-semibold">Quantity</h3>
+                <div className="space-y-4 text-center">
+                    <h3 className="text-lg font-semibold">Number of Servings per Container</h3>
+
+                    <div className="flex justify-center">
                         <Input
                             id="quantity"
                             name="quantity"
