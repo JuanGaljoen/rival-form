@@ -78,33 +78,36 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     };
 
     const calculatePackagingCost = (totalWeightInGrams) => {
-        if (totalWeightInGrams <= 300) return 6.90;
-        if (totalWeightInGrams <= 500) return 7.70;
-        if (totalWeightInGrams <= 1000) return 9.00;
-        return 0;
+        if (totalWeightInGrams <= 300) {
+            return { flatRate: 2.39, coPack: 4.00 };
+        } else if (totalWeightInGrams <= 500) {
+            return { flatRate: 3.20, coPack: 4.50 };
+        } else if (totalWeightInGrams <= 1000) {
+            return { flatRate: 4.00, coPack: 5.00 };
+        } else {
+            return 0;
+        }
     };
 
     const calculateTotal = () => {
         if (!formData.servings) return 0;
 
-        // Calculate ingredients cost per serving and multiply by number of servings
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            const grams = (parseInt(ing.mg) || 0) / 1000; // Convert mg to grams
+            const grams = (parseInt(ing.mg) || 0) / 1000;
             return sum + (pricePerGram * grams);
-        }, 0) * parseInt(formData.servings); // Multiply by number of servings
+        }, 0) * parseInt(formData.servings);
 
-        // Packaging cost based on weight (includes bottle, lid, box, scoop)
-        const packagingCost = calculatePackagingCost(totalContainerWeight / 1000);
-
+        const totalWeightInGrams = totalContainerWeight / 1000;
+        const packagingCosts = calculatePackagingCost(totalWeightInGrams);
+        const totalPackagingCost = packagingCosts.flatRate + packagingCosts.coPack;
         const flavorCost = formData.flavorProfile === "natural" ? 1.50 :
             formData.flavorProfile === "artificial" ? 1.75 : 0;
-
-        const singleContainerPrice = ingredientsCost + packagingCost + flavorCost;
+        const singleContainerPrice = ingredientsCost + totalPackagingCost + flavorCost;
         const quantity = parseInt(formData.quantity) || 1;
 
-        return (singleContainerPrice * quantity).toFixed(2);
+        return (Math.round((singleContainerPrice * quantity) * 100) / 100).toFixed(2);
     };
 
     const calculateMaxServings = () => {
@@ -266,7 +269,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 </div>
 
                 <div className="space-y-4 text-center">
-                    <h3 className="text-lg font-semibold">Number of Servings per Container</h3>
+                    <h3 className="text-lg font-semibold">Quantity</h3>
 
                     <div className="flex justify-center">
                         <Input
