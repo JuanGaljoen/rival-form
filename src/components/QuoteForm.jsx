@@ -255,7 +255,6 @@ const QuoteForm = () => {
 
                     <Button
                         type="submit"
-                        className="w-full"
                         disabled={Object.keys(errors).length > 0}
                     >
                         Submit Quote Request
