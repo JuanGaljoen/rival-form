@@ -9,20 +9,63 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
-import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
+import Papa from 'papaparse';
 
 const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
+    const [formulas, setFormulas] = useState([]); // Initialize as empty array
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const formatToGrams = (mg) => (mg / 1000).toFixed(2);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const googleSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS12taFHtw-GytQ0-NfCKaRFxnTkpiLkJantbwJjcPQ-7vQ0a5dJD0R41xUB9LjlswfsYUWMgE-jpfi/pub?output=csv';
+                const response = await fetch(googleSheetUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+                }
+                const text = await response.text();
+                const result = Papa.parse(text, {
+                    header: true,
+                    skipEmptyLines: true,
+                    dynamicTyping: true,
+                });
+                if (result.errors.length > 0) {
+                    console.error('PapaParse errors:', result.errors);
+                    throw new Error('Failed to parse CSV data');
+                }
+                const parsedFormulas = result.data
+                    .map(row => ({
+                        formula: row.ingredient || '', // Map 'ingredient' to 'formula'
+                        price: typeof row.price === 'number' ? row.price : parseFloat(row.price) || 0,
+                    }))
+                    .filter(formula => formula.formula);
+                console.log('Parsed formulas (sample):', parsedFormulas.slice(0, 5));
+                setFormulas(parsedFormulas);
+                setLoading(false);
+            } catch (err) {
+                console.error('Error fetching Google Sheet:', err);
+                setError(`Failed to load formulas: ${err.message}`);
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
             .filter((_, index) => index !== currentIndex)
-            .map(ing => ing.formula);
-        return formulas.filter(f => !selectedFormulas.includes(f.formula));
+            .map(ing => ing.formula)
+            .filter(formula => formula); // Remove empty strings
+        const availableFormulas = formulas.filter(f => !selectedFormulas.includes(f.formula));
+        console.log('Available formulas for index', currentIndex, ':', availableFormulas.slice(0, 5));
+        return availableFormulas;
     };
 
     const handleInputChange = (e) => {
@@ -141,6 +184,14 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
             }
         }));
     }, [formData.ingredients, formData.servings]);
+
+    if (loading) {
+        return <div>Loading formulas...</div>;
+    }
+
+    if (error) {
+        return <Alert variant="destructive"><AlertDescription>{error}</AlertDescription></Alert>;
+    }
 
     return (
         <Card className="w-full max-w-2xl mx-auto border-none shadow-none">
@@ -301,9 +352,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                                         • {ing.formula}: {ing.mg}mg
                                     </p>
                                 ))}
-                                {/* <p className="ml-4 text-sm text-slate-600">
-                                    Total weight per serving: {totalWeightPerServing}mg
-                                </p> */}
                             </div>
                         )}
                         {formData.servings && (
