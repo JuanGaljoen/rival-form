@@ -68,6 +68,13 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         return availableFormulas;
     };
 
+    // const getAvailableFormulas = (currentIndex) => {
+    //     const selectedFormulas = formData.ingredients
+    //         .filter((_, index) => index !== currentIndex)
+    //         .map(ing => ing.formula);
+    //     return formulas.filter(f => !selectedFormulas.includes(f.formula));
+    // };
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData(prev => ({
