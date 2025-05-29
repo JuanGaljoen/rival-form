@@ -5,15 +5,55 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import ComboboxDemo from './ComboBox';
-import formulas from '../data/formulas.json';
 import { Trash2 } from "lucide-react";
+import Papa from 'papaparse';
 
 const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeight, setTotalWeight] = useState(0);
     const [capsuleCount, setCapsuleCount] = useState(0);
+    const [formulas, setFormulas] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     const formatToGrams = (mg) => (mg / 1000).toFixed(2);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true);
+                const googleSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS12taFHtw-GytQ0-NfCKaRFxnTkpiLkJantbwJjcPQ-7vQ0a5dJD0R41xUB9LjlswfsYUWMgE-jpfi/pub?output=csv';
+                const response = await fetch(googleSheetUrl);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch CSV: ${response.statusText}`);
+                }
+                const text = await response.text();
+                const result = Papa.parse(text, {
+                    header: true,
+                    skipEmptyLines: true,
+                    dynamicTyping: true,
+                });
+                if (result.errors.length > 0) {
+                    console.error('PapaParse errors:', result.errors);
+                    throw new Error('Failed to parse CSV data');
+                }
+                const parsedFormulas = result.data
+                    .map(row => ({
+                        formula: row.ingredient || '',
+                        price: typeof row.price === 'number' ? row.price : parseFloat(row.price) || 0,
+                    }))
+                    .filter(formula => formula.formula);
+                setFormulas(parsedFormulas);
+                setLoading(false);
+            } catch (err) {
+                console.error('Error fetching Google Sheet:', err);
+                setError(`Failed to load formulas: ${err.message}`);
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -29,8 +69,10 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
     const getAvailableFormulas = (currentIndex) => {
         const selectedFormulas = formData.ingredients
             .filter((_, index) => index !== currentIndex)
-            .map(ing => ing.formula);
-        return formulas.filter(f => !selectedFormulas.includes(f.formula));
+            .map(ing => ing.formula)
+            .filter(formula => formula);
+        const availableFormulas = formulas.filter(f => !selectedFormulas.includes(f.formula));
+        return availableFormulas;
     };
 
     const addIngredient = () => {
@@ -101,10 +143,20 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                 ...prev.capsuleDetails,
                 totalIngredientWeight: weightInMg,
                 totalCapsules: capsules,
-                totalCost: calculateTotal()
+                totalCost: parseFloat(calculateTotal())
             }
         }));
-    }, [formData.ingredients, formData.quantity]);
+    }, [formData.ingredients, formData.quantity, formulas]);
+
+    // Show loading state
+    if (loading) {
+        return <div>Loading formulas...</div>;
+    }
+
+    // Show error state
+    if (error) {
+        return <Alert variant="destructive"><AlertDescription>{error}</AlertDescription></Alert>;
+    }
 
     return (
         <Card className="w-full max-w-2xl mx-auto shadow-none border-none">
@@ -168,8 +220,6 @@ const CapsuleForm = ({ formData, setFormData, errors, touched, handleBlur }) => 
                         <div className="text-sm text-slate-600 space-y-1">
                             <p>Total weight per bottle: {formatToGrams(totalWeight)}g</p>
                             <p>Number of capsules: {capsuleCount} (600mg per capsule)</p>
-                            {/* <p>Bottle cost: ${calculateBottleCost(capsuleCount)}</p>
-                            <p>Capsule cost: ${(capsuleCount * 0.007).toFixed(3)}</p> */}
                         </div>
                     )}
                 </div>
