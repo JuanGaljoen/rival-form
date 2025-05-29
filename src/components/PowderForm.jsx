@@ -25,7 +25,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         const fetchData = async () => {
             try {
                 setLoading(true);
-                const googleSheetUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vS12taFHtw-GytQ0-NfCKaRFxnTkpiLkJantbwJjcPQ-7vQ0a5dJD0R41xUB9LjlswfsYUWMgE-jpfi/pub?output=csv';
+                const googleSheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
                 const response = await fetch(googleSheetUrl);
                 if (!response.ok) {
                     throw new Error(`Failed to fetch CSV: ${response.statusText}`);
