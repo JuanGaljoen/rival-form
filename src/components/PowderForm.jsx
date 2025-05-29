@@ -15,7 +15,7 @@ import Papa from 'papaparse';
 const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
-    const [formulas, setFormulas] = useState([]); // Initialize as empty array
+    const [formulas, setFormulas] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -42,11 +42,10 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 }
                 const parsedFormulas = result.data
                     .map(row => ({
-                        formula: row.ingredient || '', // Map 'ingredient' to 'formula'
+                        formula: row.ingredient || '',
                         price: typeof row.price === 'number' ? row.price : parseFloat(row.price) || 0,
                     }))
                     .filter(formula => formula.formula);
-                console.log('Parsed formulas (sample):', parsedFormulas.slice(0, 5));
                 setFormulas(parsedFormulas);
                 setLoading(false);
             } catch (err) {
@@ -62,18 +61,10 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         const selectedFormulas = formData.ingredients
             .filter((_, index) => index !== currentIndex)
             .map(ing => ing.formula)
-            .filter(formula => formula); // Remove empty strings
+            .filter(formula => formula);
         const availableFormulas = formulas.filter(f => !selectedFormulas.includes(f.formula));
-        console.log('Available formulas for index', currentIndex, ':', availableFormulas.slice(0, 5));
         return availableFormulas;
     };
-
-    // const getAvailableFormulas = (currentIndex) => {
-    //     const selectedFormulas = formData.ingredients
-    //         .filter((_, index) => index !== currentIndex)
-    //         .map(ing => ing.formula);
-    //     return formulas.filter(f => !selectedFormulas.includes(f.formula));
-    // };
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
