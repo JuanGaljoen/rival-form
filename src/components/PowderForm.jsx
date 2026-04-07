@@ -119,37 +119,67 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     };
 
     const calculatePackagingCost = (totalWeightInGrams) => {
+        const labor = 1.00; // Labor cost is constant
+
         if (totalWeightInGrams <= 300) {
-            return { flatRate: 2.39, coPack: 4.00 };
+            return {
+                packagingItems: 1.243,  // bottle + lid + scoop + desiccant + box
+                labor: labor,
+                coPack: 4.00
+            };
         } else if (totalWeightInGrams <= 500) {
-            return { flatRate: 3.20, coPack: 4.50 };
+            return {
+                packagingItems: 1.243,  // Update this when you get correct pricing for 300-500g
+                labor: labor,
+                coPack: 4.50
+            };
         } else if (totalWeightInGrams <= 1000) {
-            return { flatRate: 4.00, coPack: 5.00 };
+            return {
+                packagingItems: 1.243,  // Update this when you get correct pricing for 500-1000g
+                labor: labor,
+                coPack: 5.00
+            };
         } else {
-            return 0;
+            return {
+                packagingItems: 0,
+                labor: 0,
+                coPack: 0
+            };
         }
     };
 
     const calculateTotal = () => {
         if (!formData.servings) return 0;
 
+        const servings = Number(formData.servings) > 0 ? Number(formData.servings) : 1;
+
         const ingredientsCost = formData.ingredients.reduce((sum, ing) => {
             const formula = formulas.find(f => f.formula === ing.formula);
             const pricePerGram = formula ? formula.price : 0;
-            const grams = (parseInt(ing.mg) || 0) / 1000;
+            const grams = (parseFloat(ing.mg) || 0) / 1000;
             return sum + (pricePerGram * grams);
-        }, 0) * parseInt(formData.servings);
+        }, 0) * servings;
 
         const totalWeightInGrams = totalContainerWeight / 1000;
         const packagingCosts = calculatePackagingCost(totalWeightInGrams);
-        const totalPackagingCost = packagingCosts.flatRate + packagingCosts.coPack;
-        const flavorCost = formData.flavorProfile === "natural" ? 1.50 :
-            formData.flavorProfile === "artificial" ? 1.75 : 0;
-        const singleContainerPrice = ingredientsCost + totalPackagingCost + flavorCost;
-        const quantity = parseInt(formData.quantity) || 1;
+        const totalPackagingCost = packagingCosts.packagingItems + packagingCosts.labor + packagingCosts.coPack;
 
-        return (Math.round((singleContainerPrice * quantity) * 100) / 100).toFixed(2);
+        const flavorCost =
+            formData.flavorProfile === "natural"
+                ? 1.50
+                : formData.flavorProfile === "artificial"
+                    ? 1.75
+                    : 0;
+
+        const singleContainerPrice =
+            ingredientsCost + totalPackagingCost + flavorCost;
+
+        const quantity =
+            Number(formData.quantity) > 0 ? Number(formData.quantity) : 1;
+
+        return (Math.round(singleContainerPrice * quantity * 100) / 100).toFixed(2);
     };
+
 
     const calculateMaxServings = () => {
         if (totalWeightPerServing === 0) return 999;
