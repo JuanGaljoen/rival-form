@@ -194,7 +194,7 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
                 totalCost: parseFloat(calculateTotal())
             }
         }));
-    }, [formData.ingredients, formData.servings, formData.quantity, formData.flavorProfile]);
+    }, [formData.ingredients, formData.servings, formData.quantity, formData.flavorProfile, formulas]);
 
     useEffect(() => {
         const weightPerServing = formData.ingredients.reduce((sum, ing) =>
