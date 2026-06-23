@@ -182,7 +182,7 @@ const QuoteForm = () => {
         }
         const emailData = {
             basicDetails: formData.basicDetails,
-            productType: formData.productType,
+            productType: formData.basicDetails.productType,
             powderDetails: formData.powderDetails,
             capsuleDetails: formData.capsuleDetails
         };
