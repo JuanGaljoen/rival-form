@@ -54,6 +54,16 @@ export const validateField = (name, value, allValues) => {
         case 'flavorProfile':
             return value ? '' : 'Please select an option';
 
+        case 'servings':
+            if (!value) return 'Number of servings is required';
+            if (parseInt(value) <= 0) return 'Please enter a valid number of servings';
+            return '';
+
+        case 'quantity':
+            if (!value) return 'Quantity is required';
+            if (parseInt(value) <= 0) return 'Please enter a valid quantity';
+            return '';
+
         case 'ingredients':
             if (!Array.isArray(value) || value.length === 0) {
                 return 'At least one ingredient is required';
