@@ -6,76 +6,18 @@ import {
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import ComboboxDemo from './ComboBox';
-import { Trash2 } from "lucide-react";
-import Papa from 'papaparse';
+import IngredientBuilder from './IngredientBuilder';
+import { useFormulas } from '../hooks/useFormulas';
+import { useIngredientHandlers } from '../hooks/useIngredientHandlers';
+import { formatToGrams } from '../lib/formulas';
 
 const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
     const [totalWeightPerServing, setTotalWeightPerServing] = useState(0);
     const [totalContainerWeight, setTotalContainerWeight] = useState(0);
-    const [formulas, setFormulas] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    const formatToGrams = (mg) => (mg / 1000).toFixed(2);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setLoading(true);
-                const googleSheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
-                const response = await fetch(googleSheetUrl);
-                if (!response.ok) {
-                    throw new Error(`Failed to fetch CSV: ${response.statusText}`);
-                }
-                const text = await response.text();
-                const result = Papa.parse(text, {
-                    header: true,
-                    skipEmptyLines: true,
-                    dynamicTyping: true,
-                });
-                if (result.errors.length > 0) {
-                    console.error('PapaParse errors:', result.errors);
-                    throw new Error('Failed to parse CSV data');
-                }
-                const parsedFormulas = result.data
-                    .map(row => ({
-                        formula: row.ingredient || '',
-                        price: typeof row.price === 'number' ? row.price : parseFloat(row.price) || 0,
-                    }))
-                    .filter(formula => formula.formula);
-                setFormulas(parsedFormulas);
-                setLoading(false);
-            } catch (err) {
-                console.error('Error fetching Google Sheet:', err);
-                setError(`Failed to load formulas: ${err.message}`);
-                setLoading(false);
-            }
-        };
-        fetchData();
-    }, []);
-
-    const getAvailableFormulas = (currentIndex) => {
-        const selectedFormulas = formData.ingredients
-            .filter((_, index) => index !== currentIndex)
-            .map(ing => ing.formula)
-            .filter(formula => formula);
-        const availableFormulas = formulas.filter(f => !selectedFormulas.includes(f.formula));
-        return availableFormulas;
-    };
-
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({
-            ...prev,
-            powderDetails: {
-                ...prev.powderDetails,
-                [name]: value
-            }
-        }));
-    };
+    const { formulas, loading, error } = useFormulas();
+    const { handleInputChange, addIngredient, removeIngredient, updateIngredient } =
+        useIngredientHandlers(setFormData, 'powderDetails');
 
     useEffect(() => {
         const weightPerServing = formData.ingredients.reduce((sum, ing) =>
@@ -85,38 +27,6 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
         const containerWeight = weightPerServing * (parseInt(formData.servings) || 0);
         setTotalContainerWeight(containerWeight);
     }, [formData.ingredients, formData.servings]);
-
-    const addIngredient = () => {
-        setFormData(prev => ({
-            ...prev,
-            powderDetails: {
-                ...prev.powderDetails,
-                ingredients: [...(prev.powderDetails.ingredients || []), { formula: '', mg: '' }]
-            }
-        }));
-    };
-
-    const removeIngredient = (index) => {
-        setFormData(prev => ({
-            ...prev,
-            powderDetails: {
-                ...prev.powderDetails,
-                ingredients: (prev.powderDetails.ingredients || []).filter((_, i) => i !== index)
-            }
-        }));
-    };
-
-    const updateIngredient = (index, field, value) => {
-        setFormData(prev => ({
-            ...prev,
-            powderDetails: {
-                ...prev.powderDetails,
-                ingredients: (prev.powderDetails.ingredients || []).map((ing, i) =>
-                    i === index ? { ...ing, [field]: value } : ing
-                )
-            }
-        }));
-    };
 
     const calculatePackagingCost = (totalWeightInGrams) => {
         const labor = 1.00; // Labor cost is constant
@@ -289,59 +199,16 @@ const PowderForm = ({ formData, setFormData, errors, touched, handleBlur }) => {
 
                 <div className="space-y-4">
                     <h3 className="text-lg font-semibold">Build Your Formula</h3>
-                    <div className="space-y-4">
-                        {formData.ingredients.map((ingredient, index) => (
-                            <div key={index} className="flex items-start space-x-4">
-                                <div className="flex-1 min-w-0">
-                                    <ComboboxDemo
-                                        value={ingredient.formula}
-                                        onChange={(index, field, value) => {
-                                            updateIngredient(index, field, value);
-                                            handleBlur({ target: { name: 'ingredients' } });
-                                        }}
-                                        index={index}
-                                        formulas={getAvailableFormulas(index)}
-                                    />
-                                </div>
-                                <Input
-                                    type="number"
-                                    value={ingredient.mg}
-                                    onChange={(e) => {
-                                        updateIngredient(index, 'mg', e.target.value);
-                                        handleBlur({ target: { name: 'ingredients' } });
-                                    }}
-                                    placeholder="mg"
-                                    className={`w-16 sm:w-24 shrink-0 ${errors.ingredients && !ingredient.mg ? 'border-red-500' : ''
-                                        }`}
-                                    min="1"
-                                />
-                                <Button
-                                    variant="destructive"
-                                    onClick={() => removeIngredient(index)}
-                                    className="p-2 shrink-0"
-                                >
-                                    <Trash2 className="h-4 w-4" />
-                                    <span className="sr-only">Remove</span>
-                                </Button>
-                            </div>
-                        ))}
-
-                        <Button
-                            onClick={() => {
-                                addIngredient();
-                                handleBlur({ target: { name: 'ingredients' } });
-                            }}
-                            variant="outline"
-                            className="mt-2"
-                            type="button"
-                        >
-                            Add Ingredient
-                        </Button>
-
-                        {errors.ingredients && touched.ingredients && (
-                            <p className="text-sm text-red-500">{errors.ingredients}</p>
-                        )}
-                    </div>
+                    <IngredientBuilder
+                        ingredients={formData.ingredients}
+                        formulas={formulas}
+                        onUpdate={updateIngredient}
+                        onRemove={removeIngredient}
+                        onAdd={addIngredient}
+                        errors={errors}
+                        touched={touched}
+                        handleBlur={handleBlur}
+                    />
                     <p className="text-sm text-slate-600">
                         Total weight per container: {formatToGrams(totalContainerWeight)}g
                     </p>
