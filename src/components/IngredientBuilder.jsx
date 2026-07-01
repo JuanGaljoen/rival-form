@@ -46,6 +46,7 @@ const IngredientBuilder = ({
                         min="1"
                     />
                     <Button
+                        type="button"
                         variant="destructive"
                         onClick={() => onRemove(index)}
                         className="p-2 shrink-0"
